@@ -1,5 +1,6 @@
 client_secret.json
 token.pickle
+./backend/Spardha/token.pickle.aes
 
 # Created by https://www.gitignore.io/api/venv,dotenv,django,python,virtualenv,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=venv,dotenv,django,python,virtualenv,visualstudiocode
