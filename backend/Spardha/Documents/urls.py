@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import DocumentCreateView
+from .views import DocumentView, AllDocumentView
 
 urlpatterns = [
-    path("verify/", DocumentCreateView.as_view(), name="documents_verify")
+    path("", AllDocumentView.as_view(), name="get-create-document"),
+    path("verify/<int:id>/", DocumentView.as_view(), name="verify-document")
 ]
