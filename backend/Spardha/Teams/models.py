@@ -51,9 +51,9 @@ class Contingent(models.Model):
     num_of_boys = models.IntegerField()
     num_of_girls = models.IntegerField()
     # num_of_officials = models.IntegerField()
-    num_of_coaches_pti = models.IntegerField()
-    num_of_faculty_members = models.IntegerField()
-    num_of_supporting_staff = models.IntegerField()
+    num_of_coaches_pti = models.IntegerField(default=0)
+    num_of_faculty_members = models.IntegerField(default=0)
+    num_of_supporting_staff = models.IntegerField(default=0)
     leader_name = models.CharField(max_length=50)
     leader_contact_num = models.CharField(
         max_length=10, validators=[MinLengthValidator(10)])

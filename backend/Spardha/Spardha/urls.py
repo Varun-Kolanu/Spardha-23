@@ -36,6 +36,7 @@ urlpatterns = [
     path("auth/", include("Authentication.urls")),
     path("teams/", include("Teams.urls")),
     path("manager/", include("Manager.urls")),
+    path("documents/", include("Documents.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
