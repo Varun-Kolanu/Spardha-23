@@ -18,7 +18,7 @@ class AllDocumentView(generics.GenericAPIView):
                             ...
                         },
                         "is_verified": false/true,
-                        "verified_by": ...,
+                        "verified_by": {Id of User Who verified}: Integer,
                         "verification_time": 2023-08-26T02:19:15.233111+05:30 (SampleFormat) or null
                     },...
                 ]}"""
@@ -32,7 +32,7 @@ class AllDocumentView(generics.GenericAPIView):
     @swagger_auto_schema(
         responses={
             201: """{
-                    "success": "Document has been created"
+                    "success": "Document has been created successfully"
                 }"""
         }
     )
@@ -40,7 +40,7 @@ class AllDocumentView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         document=serializer.save()
-        return Response({"success": "Document has been created"}, status=status.HTTP_201_CREATED)
+        return Response({"success": "Document has been created successfully"}, status=status.HTTP_201_CREATED)
 
 class DocumentView(generics.GenericAPIView):
     serializer_class = DocumentUpdateSerializer
@@ -48,7 +48,7 @@ class DocumentView(generics.GenericAPIView):
     @swagger_auto_schema(
         responses={
             204: """{
-                    "success": "Document's verification status has been updated"
+                    "success": "Document's verification status has been updated successfully"
                 }""",
             404: """{
                 "error": "The Document does not exist"
@@ -62,6 +62,6 @@ class DocumentView(generics.GenericAPIView):
             serializer = self.get_serializer(document_to_verify, data=request.data,partial=True)
             serializer.is_valid(raise_exception=True)
             document=serializer.save()
-            return Response({"success": "Document's verification status has been updated"}, status=status.HTTP_204_NO_CONTENT)
+            return Response({"success": "Document's verification status has been updated successfully"}, status=status.HTTP_204_NO_CONTENT)
         except:
             return Response({"error": "The Document does not exist"}, status=status.HTTP_404_NOT_FOUND)
