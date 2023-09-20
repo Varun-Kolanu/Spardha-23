@@ -69,8 +69,8 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
      'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
+        'Spardha.CustomThrottle.CustomAnonThrottle',
+        'Spardha.CustomThrottle.CustomUserThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
         'anon': '30/min',

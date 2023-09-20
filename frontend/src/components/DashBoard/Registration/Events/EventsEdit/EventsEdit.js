@@ -25,6 +25,7 @@ function EventsEdit() {
     Cricket_B: false,
     Football_B: false,
     Handball_B: false,
+    Handball_G: false,
     Hockey_B: false,
     'Lawn Tennis_B': false,
     'Lawn Tennis_G': false,
@@ -562,6 +563,21 @@ function EventsEdit() {
                         </FormGroup>
                       </div>
                       <div className={`col-sm-6 ${styles.container}`}>
+                      <FormGroup className={`${styles['input-wrapper']}`}>
+                          <Input
+                            type="checkbox"
+                            id="Handball_G"
+                            checked={games['Handball_G']}
+                            onChange={changeHandler}
+                          />
+                          <Label
+                            className={`${styles['sports-label']}`}
+                            for="Handball_G"
+                          >
+                            {' '}
+                            Handball{' '}
+                          </Label>
+                        </FormGroup>
                         <FormGroup className={`${styles['input-wrapper']}`}>
                           <Input
                             type="checkbox"

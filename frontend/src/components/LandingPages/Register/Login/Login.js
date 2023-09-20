@@ -289,7 +289,7 @@ function Login() {
             <FaPaperPlane color="white" className="me-1"></FaPaperPlane>
             LOGIN
           </Button>
-          {/* <b
+          {<b
             style={{
               fontSize: '10px',
               textAlign: 'center',
@@ -300,7 +300,7 @@ function Login() {
             <Link to="/register/Signup" style={{ textDecoration: 'none' }}>
               {`Sign up `}
             </Link>
-          </b> */}
+          </b>}
         </div>
       </Form>
     </div>

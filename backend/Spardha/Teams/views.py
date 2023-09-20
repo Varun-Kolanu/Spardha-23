@@ -10,8 +10,10 @@ from .serializers import (
 )
 from drf_yasg.utils import swagger_auto_schema
 from scripts.user_registration import UsersSheet
+from drf_yasg import openapi
 # from scripts.team_registration import TeamsSheet
 
+token_param = openapi.Parameter('Authorization', openapi.IN_HEADER, description="Token <YourToken>", type=openapi.TYPE_STRING)
 
 class AllGamesView(generics.ListAPIView):
     serializer_class = GameSerializer
@@ -98,7 +100,8 @@ class ContingentDetailView(generics.GenericAPIView):
                 "leader_name": ....,
                 "leader_contact_num": ....,
                 }""",
-        }
+        },
+        manual_parameters=[token_param]
     )
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
@@ -120,7 +123,8 @@ class ContingentDetailView(generics.GenericAPIView):
                 "leader_contact_num": ....,
                 }""",
             404: """{"error":"Contingent not found"}""",
-        }
+        },
+        manual_parameters=[token_param]
     )
     def get(self, request):
         # print(request.user)
@@ -134,7 +138,8 @@ class ContingentDetailView(generics.GenericAPIView):
     @swagger_auto_schema(
         responses={
             204: """{"delete": "Contingent has been deleted"}""",
-        }
+        },
+        manual_parameters=[token_param]
     )
     def delete(self, request):
         contingent = Contingent.objects.filter(college_rep=request.user)

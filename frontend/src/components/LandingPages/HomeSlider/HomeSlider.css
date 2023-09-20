@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+.ca{
+  display: none;
+}
+.reg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
 #home-slider-item-1 {
   background-image: url(./../../../assets/bg/bg_1.jpg);
   outline: 2px solid black;

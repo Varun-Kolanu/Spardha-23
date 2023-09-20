@@ -5,8 +5,7 @@ from .views import (
     NewPasswordView,
     RegisterView,
 )
-from .views import ActivateAccount, LoginView, LogoutView, UserUpdateView, ResendLinkView, DeleteAccountView
-
+from .views import ActivateAccount, LoginView, LogoutView, UserUpdateView, ResendLinkView, DeleteAccountView, AllUsersView
 """
 TODO:
 Add the urlpatterns of the endpoints, required for implementing
@@ -40,4 +39,5 @@ urlpatterns = [
         NewPasswordView.as_view(),
         name="password-reset-complete",
     ),
+    path("all/", AllUsersView.as_view(), name="all_users")
 ]
