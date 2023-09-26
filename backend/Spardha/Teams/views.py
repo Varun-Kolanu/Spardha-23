@@ -258,8 +258,8 @@ class TeamView(generics.GenericAPIView):
             204: """{"error":"Team not found"}""",
         }
     )
-    def delete(self, request, games):
-        if deleteData(request, games) == True:
+    def delete(self, request, game):
+        if deleteData(request, [game]) == True:
             UsersSheet.update_user(request.user.email)
             return Response({"success": "Teams have been deleted"}, status=status.HTTP_200_OK)
         else:

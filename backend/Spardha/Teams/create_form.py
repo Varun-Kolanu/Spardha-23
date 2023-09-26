@@ -24,8 +24,8 @@ def create_form(data):
     college_name.runs[0].font.size = Pt(18)
 
     initial_headings = (
-        ('Total No. of Participants', f'Female: {data["num_of_girls"]}', f'Male: : {data["num_of_girls"]}'),
-        ('No. of officials', f'Faculty Members: : {data["num_of_faculty_members"]}', f'Coaches & PTI: {data["num_of_coaches_pti"]}', f'Supporting Staff: {data["num_of_faculty_members"]}'),
+        ('Total No. of Participants', f'Female: {data["num_of_girls"]}', f'Male: {data["num_of_girls"]}'),
+        ('No. of officials', f'Faculty Members: {data["num_of_faculty_members"]}', f'Coaches & PTI: {data["num_of_coaches_pti"]}', f'Supporting Staff: {data["num_of_faculty_members"]}'),
         ('Arrival of the Team:','Date','Train/ Flight No.:','PNR nos. (If via Train):'),
         ('Departure of the Team:','Train/ Flight No.:','PNR nos. (If via Train):'),
     )
@@ -103,13 +103,13 @@ def create_form(data):
             i += 1
 
         
-        captain_info = doc.add_paragraph("\n\nCaptain Name: _________________________     Email ID: ________________________________________\n\nPh.no. : ______________________")
+        captain_info = doc.add_paragraph(f"\n\nCaptain Name: {game['captain_name']}     Email ID: ________________________________________\n\nPh.no. : {game['captain_phone']}")
         captain_info.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
         vice_captain_info = doc.add_paragraph("Vice-Captain Name: _________________________ Email ID: ________________________________________\n\nPh.no.:  ______________________")
         vice_captain_info.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
-        signature_heading = doc.add_paragraph('\n\n\n\nSignature with Seal:')
+        signature_heading = doc.add_paragraph('\n\n\n\nSignature with Seal')
         signature_heading.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 
     doc_io = BytesIO()

@@ -23,8 +23,7 @@ const Topbar = ({ toggleSidebar }) => {
 
   const [user, setUser] = useState('');
   const [numevents, setNumEvents] = useState('loading...');
-  const {getEventCount}=React.useContext(EventContext);
-
+  const { getEventCount } = React.useContext(EventContext);
 
   useEffect(() => {
     axios
@@ -41,7 +40,7 @@ const Topbar = ({ toggleSidebar }) => {
       .catch((err) => {
         console.log('error=', err);
       });
-setNumEvents('loading...');
+    setNumEvents('loading...');
     axios
       .get(`${baseUrl}teams/`, {
         headers: {
@@ -55,10 +54,9 @@ setNumEvents('loading...');
       })
       .catch((err) => {
         console.log('error=', err);
-        if (err.response.status === 404 ||err.response.status === 429) {
-          setNumEvents("error!");
+        if (err.response.status === 404 || err.response.status === 429) {
+          setNumEvents('error!');
         }
-        
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
