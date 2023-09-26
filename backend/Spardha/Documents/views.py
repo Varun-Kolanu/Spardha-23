@@ -4,14 +4,23 @@ from .serializers import AllDocumentSerializer, DocumentUpdateSerializer
 from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
 from django.utils import timezone
+from drf_yasg import openapi
+
+token_param = openapi.Parameter('Authorization', openapi.IN_HEADER, description="Token <YourToken>", type=openapi.TYPE_STRING)
 
 class AllDocumentView(generics.GenericAPIView):
     serializer_class = AllDocumentSerializer
 
+    @swagger_auto_schema(
+        manual_parameters=[token_param]
+    )
     def get(self, request):
-        documents = Document.objects.all()
-        serializer = AllDocumentSerializer(documents, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        if request.user.is_staff or request.user.is_admin:
+            documents = Document.objects.all()
+            serializer = AllDocumentSerializer(documents, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response({"error": "You are not allowed to access this endpoint"}, status=status.HTTP_403_FORBIDDEN)
     
     @swagger_auto_schema(
         responses={

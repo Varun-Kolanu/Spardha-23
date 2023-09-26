@@ -79,8 +79,11 @@ def serialized_data(contingent):
 class AllContingentView(generics.GenericAPIView):
     serializer_class = AllContingentSerializer
 
+    @swagger_auto_schema(
+        manual_parameters=[token_param]
+    )
     def get(self, request):
-        if request.user.is_staff:
+        if request.user.is_staff or request.user.is_admin:
             # * The below line fetches all the teams and the game associated with the team. It optimizes the speed of queries by decreasing N queries into a single query
             contingents = Contingent.objects.prefetch_related(
                 'college_rep__team_set__game').all()
@@ -297,7 +300,9 @@ def form_serialized_data(contingent):
                 "game_name": team.game.name,
                 "max_players": team.game.max_players,
                 "players": team.players,
-                "game_type": team.game.game_type
+                "game_type": team.game.game_type,
+                "captain_name": team.captain_name,
+                "captain_phone": team.captain_phone
             } for team in college_rep.team_set.all()
         ]
         #* college_rep.team_set fetches all the teams it is referred by foreign key
@@ -316,6 +321,9 @@ class ContingentFormView(generics.GenericAPIView):
         data = {}
         for contingent in contingents:
             data = form_serialized_data(contingent)
-        response = FileResponse(create_form(data), content_type='application/msword')
-        response['Content-Disposition'] = 'attachment; filename="Spardha23_detailed_entry_form.docx"'
+        if not data:
+            response = Response({"error": "Please register your contingent"}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            response = FileResponse(create_form(data), content_type='application/msword')
+            response['Content-Disposition'] = 'attachment; filename="Spardha23_detailed_entry_form.docx"'
         return response
