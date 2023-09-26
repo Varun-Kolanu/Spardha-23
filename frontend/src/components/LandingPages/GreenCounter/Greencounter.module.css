@@ -1,15 +1,17 @@
-.ftco_counter {
-  background-image: url('./../../../assets/bg/bg_basketball.jpg');
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&family=Poppins&display=swap');
+
+
+
+
+
 
 .ftco-counter {
   padding: 7em 0;
+  
 }
 
 #section-counter {
+
   position: relative;
   z-index: 0;
 }
@@ -17,6 +19,7 @@
 @media (max-width: 1199.98px) {
   .ftco-counter {
     background-position: center center !important;
+    
   }
 }
 
@@ -26,7 +29,7 @@
   right: 0;
   left: 0;
   height: 150%;
-  background: #7ed321;
+  
   opacity: 0.8;
 }
 
@@ -36,6 +39,8 @@
   height: 150%;
   padding-top: 50px;
   padding-bottom: 50px;
+  background: white;
+  border-radius: 20px;
 }
 
 @media (min-width: 576px) {
@@ -72,6 +77,8 @@
     margin-left: 25px; */
   justify-content: center;
   -webkit-box-pack: center !important;
+
+  
 }
 
 .col_md_12 {
@@ -84,6 +91,7 @@
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
   max-width: 100%;
+  
 }
 
 @media (min-width: 768px) {
@@ -130,6 +138,8 @@
   -webkit-box-align: center !important;
   -ms-flex-align: center !important;
   align-items: center !important;
+  
+  
 }
 
 @media (max-width: 768px) {
@@ -154,6 +164,9 @@
   font-size: 40px;
   display: block;
   text-align: center !important;
+  
+  
+  
 }
 
 .circle {
@@ -163,17 +176,19 @@
   vertical-align: middle;
   border-radius: 115px;
   border-width: 4px;
-  border-color: white;
+  border-color:#760E53 ;
   border-style: solid;
-  color: white;
+  color: #760E53;
   padding: 65px 5px;
   text-align: center;
-  font-family: 'League Spartan';
+  font-family: 'Poppins';
+  
 }
 
 .numbergc {
   letter-spacing: 3px;
   font-weight: 800;
   font-size: 50px;
-  color: #fff;
+  color:#760E53;
+ 
 }

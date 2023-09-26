@@ -5,6 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import GalleryModal from '../GalleryModal/GalleryModal';
 // import Background_gallery from '/images/bg/bg_football.png';
 
@@ -38,25 +39,34 @@ const Gallery = () => {
 
   return (
     <>
+
       <section id="gallery" className="ftco-section padSect">
-        <div className="container_gallery gallery-container mb-5 pt-1">
-          <div className="row_gallery justify-content-center pt-5">
-            <div className="col-md-7 heading-section_gallery text-center">
               <h3
                 className="subheading_gallery"
-                style={{ color: '#6db549', fontWeight: '900' }}
+                style={{ color: '#760e53'  ,fontFamily: 'Poppins',
+                fontSize: '30px',
+                fontWeight: '900',
+                lineHeight: '25px',
+                letterSpacing: '0em',
+                textDecoration:'underline',
+                display:'flex'
+                ,margin:'30px',
+                justifyContent:'center'
+               
+                }}
               >
                 Some Past Memories
               </h3>
-              <h2 className="mb-1" style={{ fontWeight: '900' }}>
-                Gallery
-              </h2>
+        <div className="container_gallery gallery-container mb-5 pt-1">
+          <div className="row_gallery justify-content-center pt-5">
+            <div className="col-md-7 heading-section_gallery text-center">
+              
             </div>
           </div>
           {/* <hr style="margin-left: 30px; margin-right: 30px;"> */}
           <div className="tz-gallery">
-            <div className="row_gallery mb-3 gallery-heading boldClass">
-              Opening Ceremony:
+            <div className="row_gallery mb-3 gallery-heading boldClass"  style={{ color: '#760e53'}}>
+              Opening Ceremony
             </div>
 
             <div className="row_gallery">
@@ -131,7 +141,7 @@ const Gallery = () => {
                 </span>
               </div>
             </div>
-            <div className="row_gallery mb-3 mt-3 gallery-heading boldClass">
+            <div className="row_gallery mb-3 mt-3 gallery-heading boldClass"  style={{ color: '#760e53'}}>
               Pre-Events:
             </div>
             <div

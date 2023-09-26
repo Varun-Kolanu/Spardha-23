@@ -56,6 +56,31 @@ const Home = () => {
   // console.log('a=', a);
   localStorage.setItem('College_Rep', a);
 
+  const handleDownload = () => {
+    axios.get(`${baseUrl}teams/contingent/form`, {
+      responseType: 'blob',
+      headers: {
+        Authorization: `Token ${token}`,
+      }
+    })
+      .then((response) => {
+        const blob = new Blob([response.data], { type: 'application/msword' });
+        const url = window.URL.createObjectURL(blob);
+
+        // Create a temporary anchor element to trigger the download
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Spardha23_detailed_entry_form.docx';
+        a.click();
+
+        // Release the object URL to free up memory
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.error('Error downloading document:', error);
+      });
+  };
+
   return (
     <div className="user-dashboard">
       <h1>Hello, {user.name}</h1>
@@ -120,6 +145,9 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+      <button className="btnform" onClick={handleDownload}>Download Entry Form</button>
       </div>
     </div>
   );

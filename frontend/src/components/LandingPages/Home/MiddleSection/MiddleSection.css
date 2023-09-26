@@ -1,0 +1,294 @@
+@font-face {
+	font-family: 'Helvetica123';
+	src: url('../../../../../public/fonts/Helvetica-Font1/Helvetica-Neue-Font/Helvetica-Neue-LTW0697BlkCnObl/Helvetica\ Neue\ LTW0697BlkCnObl.ttf') format('truetype');
+  }
+  
+body {
+
+	height: 30vh;
+	/* margin-top: 5vh; */
+
+    width: 100vw;
+
+  
+}
+
+.container-home {
+	padding-top: 10vh;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	width:100vw;
+	height: 67vh;
+
+}
+
+
+.left-box {
+	display: flex;
+	flex-direction: column;
+	color: white;
+	text-align: center;
+	width: 60vw;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	/* margin-left: 3vw; */
+}
+
+.right-box {
+	width: 30vw;
+	height: 100%;
+	margin-right: 7vw;
+}
+
+.heading1 {
+	font-family: Helvetica123;
+	font-size: 60px;
+	font-style: italic;
+	font-weight: 900;
+	line-height: 70px;
+	letter-spacing: 0em;
+	text-align: left;
+	
+}
+
+.description {
+	font-size: 2.5vh;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-evenly;
+	gap: 2vw;
+	margin: 2vh;
+	margin-top: 5vh;
+}
+
+.right-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn1 {
+	width: 15vw;
+	font-weight: bolder;
+	padding: 1vh 3vw;
+	font-size: 2.8vh;
+	border: 1px solid white;
+	border-radius: 5px;
+	background: none;
+	color: white;
+	transition-duration: 0.3s;
+}
+
+.btn1:hover {
+	background-color: white;
+	color: black;
+	transform: scale(1.1);
+}
+
+.btn2 {
+	width: 15vw;
+	font-weight: bolder;
+	padding: 1vh 3vw;
+	font-size: 2.8vh;
+	border: none;
+	border-radius: 5px;
+	background: red;
+	color: white;
+	transition-duration: 0.3s;
+}
+
+.btn2:hover {
+	background: brown;
+	border: 2px solid white;
+	transform: scale(1.1);
+}
+
+.card {
+	height: 25vh;
+width: max-content;
+	border: none;
+}
+
+.cdate {
+	height: 70%;
+	color: red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 12vh;
+	font-weight: 700;
+	font-style: italic;
+
+
+}
+
+.ctext {
+	font-size: 2.7vh;
+	margin: 0px;
+	height: 30%;
+	display: flex;
+	padding: 0.5vw;
+	flex-wrap: wrap;
+	background-color: red;
+	color: white;
+	align-items: center;
+	border-radius: 5px;
+	font-weight: 600;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+@media (max-width:1530px) and (min-width:950px){
+	.heading1 {
+		font-size: 5.7vw;
+	
+	}
+	.btn1,.btn2{
+		width: 20vw;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+
+@media (max-width: 950px) and (min-width:790px) {
+
+	.container-home {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.heading1 {
+		font-size: 7vh;
+		margin: 5vh 0vw;
+	}
+
+	.left-box {
+		width: 100%;
+		padding: 1rem;
+		text-align: center;
+		height: 55vh;
+		margin: 0px 10px;
+
+	}
+
+	.button-container {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		width: 100%;
+		margin: 4vh;
+
+	}
+
+	.right-box {
+		height: 17vh;
+margin: 0px;
+	}
+
+	.card {
+		height: fit-content;
+
+	}
+
+	.ctext {
+		height: fit-content;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2vh;
+		padding: 0.7vh;
+	}
+
+	.cdate {
+		font-size: 5vh;
+	}
+
+
+	.description {
+		font-size: 3vh;
+	}
+
+	.btn1,
+	.btn2 {
+		font-size: 2.8vh;
+		width: 100%;
+		max-width: 300px;
+	}
+}
+@media (max-width: 790px)  {
+
+	.container-home {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.heading1 {
+		font-size: 5vh;
+		margin: 5vh 0vw;
+		line-height: 6vh;
+	}
+
+	.left-box {
+		width: 100%;
+		padding: 1rem;
+		text-align: center;
+		height: 55vh;
+		margin: 0px 10px;
+
+	}
+
+	.button-container {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		margin: 4vh;
+
+	}
+
+	.right-box {
+		height: 17vh;
+margin: 0px;
+	width: 35vw;
+
+
+
+	}
+
+	.card {
+		height: fit-content;
+
+
+	}
+
+	.ctext {
+		height: fit-content;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2vh;
+		padding: 0.5vh;
+		text-align: center;
+	}
+
+	.cdate {
+		font-size: 5vh;
+	}
+
+
+	.description {
+		font-size: 1rem;
+	}
+
+	.btn1,
+	.btn2 {
+		font-size: 2.5vh;
+		width: 50vw;
+	}
+}

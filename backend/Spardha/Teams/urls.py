@@ -5,6 +5,7 @@ from .views import (
     TeamView,
     AllContingentView,
     ContingentDetailView,
+    ContingentFormView
 )
 
 
@@ -15,4 +16,5 @@ urlpatterns = [
     path("contingent/details/", ContingentDetailView.as_view(),
          name="contingent-details"),
     path("contingent/all/", AllContingentView.as_view(), name="get-all-contingents"),
+    path("contingent/form/", ContingentFormView.as_view(),name="get-contingent-form")
 ]

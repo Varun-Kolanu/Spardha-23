@@ -1,59 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import styles from './EventsEdit.module.css';
 import { FaMale, FaFemale } from 'react-icons/fa';
-import { Button, Collapse, FormGroup, Input, Label, Spinner } from 'reactstrap';
+import { Button, Collapse, FormGroup, Input, Label } from 'reactstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { EventContext } from '../../../../../contexts/EventContext';
+
+const GAMES = {
+  boys: [
+    'Athletics',
+    'Badminton',
+    'Basketball',
+    'Boxing',
+    'Kabaddi',
+    'Kho-Kho',
+    'Handball',
+    'Lawn Tennis',
+    'Squash',
+    'Table Tennis',
+    'Volleyball',
+    'Taekwondo',
+    'Cricket',
+    'Football',
+    'Hockey',
+    'Powerlifting',
+    'Weightlifting',
+  ],
+  girls: [
+    'Athletics',
+    'Badminton',
+    'Basketball',
+    'Boxing',
+    'Kabaddi',
+    'Kho-Kho',
+    'Handball',
+    'Lawn Tennis',
+    'Squash',
+    'Table Tennis',
+    'Taekwondo',
+    'Volleyball',
+  ],
+  mixed: ['Chess', 'Cycling'],
+};
 
 function EventsEdit() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  const selectedGames = {
-    // Aquatics_B: false,
-    // Aquatics_G: false,
-    Athletics_B: false,
-    Athletics_G: false,
-    Badminton_G: false,
-    Badminton_B: false,
-    Basketball_G: false,
-    Basketball_B: false,
-    Boxing_B: false,
-    Boxing_G: false,
-    // Carrom_M: false,
-    Chess_M: false,
-    Cycling_M: false,
-    Cricket_B: false,
-    Football_B: false,
-    Handball_B: false,
-    Handball_G: false,
-    Hockey_B: false,
-    'Lawn Tennis_B': false,
-    'Lawn Tennis_G': false,
-    Kabaddi_B: false,
-    Kabaddi_G: false,
-    'Kho-Kho_B': false,
-    'Kho-Kho_G': false,
-    'Table Tennis_B': false,
-    'Table Tennis_G': false,
-    Taekwondo_B: false,
-    Taekwondo_G: false,
-    Volleyball_B: false,
-    Volleyball_G: false,
-    Weightlifting_B: false,
-    Squash_B: false,
-    Squash_G: false,
-    Powerlifting_B: false,
-  };
+  const selectedGames = [];
   const [showBoys, setShowBoys] = useState(true);
   const [showGirls, setShowGirls] = useState(true);
   const [showMixed, setShowMixed] = useState(true);
-  const [showBoysSpinner, setShowBoysSpinner] = useState(false);
-  const [showGirlsSpinner, setShowGirlsSpinner] = useState(false);
-  const [showMixedSpinner, setShowMixedSpinner] = useState(false);
-  const [games, setGames] = useState(selectedGames);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const allFalseGameChoice = {};
+  GAMES.boys.forEach((game) => {
+    allFalseGameChoice[game + '_B'] = false;
+  });
+  GAMES.girls.forEach((game) => {
+    allFalseGameChoice[game + '_G'] = false;
+  });
+  GAMES.mixed.forEach((game) => {
+    allFalseGameChoice[game + '_M'] = false;
+  });
 
-  const baseUrl = process.env.REACT_APP_BASE_URL;
+  const [games, setGames] = useState({});
+  const [prevGames, setPrevGames] = useState({}); //for checking if any changes were made
+
+  let baseUrl = process.env.REACT_APP_BASE_URL;
+  if (baseUrl.substring(baseUrl.length - 1) !== '/') baseUrl += '/';
+
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${baseUrl}teams/`, {
         headers: {
@@ -65,74 +82,64 @@ function EventsEdit() {
         for (const team of data) {
           newGames[`${team.game}`] = true;
         }
+        console.log('newg', newGames);
         setGames(newGames);
+        setPrevGames({ ...newGames });
+        setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        console.error(err.message);
+        setErrorMessage('Could not fetch data '+err.message);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeHandler = (e) => {
     const game = e.target.id;
-    if (game.endsWith('_B')) setShowBoysSpinner(true);
-    else if (game.endsWith('_G')) setShowGirlsSpinner(true);
-    else setShowMixedSpinner(true);
-    if (games[game]) {
-      axios
-        .delete(`${baseUrl}teams/${game}/`, {
+    games[game] = !games[game];
+    console.log(prevGames, games);
+    setGames({ ...games });
+  };
+  function getChanges() {
+    let changes = { add: [], remove: [] };
+    for (let game in games) {
+      if (games[game] !== !!prevGames[game]) {
+        // changes[game]=games[game];
+        if (games[game]) {
+          changes.add.push(game);
+        } else {
+          changes.remove.push(game);
+        }
+      }
+    }
+    console.log(changes);
+    return changes;
+  }
+  const { setGetEventCount } = React.useContext(EventContext);
+  const submitHandler = async () => {
+    let changes = getChanges();
+    setLoading(true);
+    axios
+      .patch(
+        `${baseUrl}teams/`,
+        { changes },
+        {
           headers: {
             Authorization: `Token ${token}`,
           },
-        })
-        .then((res) => {
-          setGames((prevState) => {
-            const newGames = { ...prevState };
-            newGames[game] = false;
-            return newGames;
-          });
-          if (game.endsWith('_B')) setShowBoysSpinner(false);
-          else if (game.endsWith('_G')) setShowGirlsSpinner(false);
-          else setShowMixedSpinner(false);
-        })
-        .catch((err) => {
-          console.error(err);
-          if (game.endsWith('_B')) setShowBoysSpinner(false);
-          else if (game.endsWith('_G')) setShowGirlsSpinner(false);
-          else setShowMixedSpinner(false);
-        });
-    } else {
-      axios
-        .post(
-          `${baseUrl}teams/`,
-          { game },
-          {
-            headers: {
-              Authorization: `Token ${token}`,
-            },
-          }
-        )
-        .then((res) => {
-          setGames((prevState) => {
-            const newGames = { ...prevState };
-            newGames[game] = true;
-            return newGames;
-          });
-          if (game.endsWith('_B')) setShowBoysSpinner(false);
-          else if (game.endsWith('_G')) setShowGirlsSpinner(false);
-          else setShowMixedSpinner(false);
-        })
-        .catch((err) => {
-          console.error(err);
-          if (game.endsWith('_B')) setShowBoysSpinner(false);
-          else if (game.endsWith('_G')) setShowGirlsSpinner(false);
-          else setShowMixedSpinner(false);
-        });
-    }
-  };
-
-  const submitHandler = () => {
-    navigate('/dashboard/registration');
+        }
+      )
+      .then(() => {
+        setGetEventCount((prev) => prev + 1);
+        navigate('/dashboard/registration');
+      })
+      .catch((err) => {
+        console.error(err); //could not submit changes
+        setErrorMessage('Could not submit changes '+err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -151,287 +158,33 @@ function EventsEdit() {
                     style={{ color: '#59ba00' }}
                   >
                     <FaMale /> <b>Boys </b>
-                    {showBoysSpinner && <Spinner size="sm" />}
                   </h4>
                 </div>
                 <Collapse isOpen={showBoys}>
                   <div className={`${styles['panel-body']}`}>
                     <div className="row xs-1 sm-2">
                       <div className={`col-sm-6 ${styles.container}`}>
-                        {/* <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Aquatics_B"
-                            checked={games['Aquatics_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Aquatics_B"
-                          >
-                            {' '}
-                            Aquatics{' '}
-                          </Label>
-                        </FormGroup> */}
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Athletics_B"
-                            checked={games['Athletics_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Athletics_B"
-                          >
-                            {' '}
-                            Athletics{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Badminton_B"
-                            checked={games['Badminton_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Badminton_B"
-                          >
-                            {' '}
-                            Badminton{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Basketball_B"
-                            checked={games['Basketball_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Basketball_B"
-                          >
-                            {' '}
-                            Basketball{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Boxing_B"
-                            checked={games['Boxing_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Boxing_B"
-                          >
-                            {' '}
-                            Boxing{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Cricket_B"
-                            checked={games['Cricket_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Cricket_B"
-                          >
-                            {' '}
-                            Cricket{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Football_B"
-                            checked={games['Football_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Football_B"
-                          >
-                            {' '}
-                            Football{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Handball_B"
-                            checked={games['Handball_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Handball_B"
-                          >
-                            {' '}
-                            Handball{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Hockey_B"
-                            checked={games['Hockey_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Hockey_B"
-                          >
-                            {' '}
-                            Hockey{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Kabaddi_B"
-                            checked={games['Kabaddi_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Kabaddi_B"
-                          >
-                            {' '}
-                            Kabaddi{' '}
-                          </Label>
-                        </FormGroup>
-                      </div>
-                      <div className={`col-sm-6 ${styles.container}`}>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Kho-Kho_B"
-                            checked={games['Kho-Kho_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Kho-Kho_B"
-                          >
-                            {' '}
-                            Kho-Kho{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Lawn Tennis_B"
-                            checked={games['Lawn Tennis_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Lawn Tennis_B"
-                          >
-                            {' '}
-                            Lawn Tennis{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Powerlifting_B"
-                            checked={games['Powerlifting_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Powerlifting_B"
-                          >
-                            {' '}
-                            Powerlifting{' '}
-                          </Label>
-                        </FormGroup>
-
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Squash_B"
-                            checked={games['Squash_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Squash_B"
-                          >
-                            {' '}
-                            Squash{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Table Tennis_B"
-                            checked={games['Table Tennis_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Table Tennis_B"
-                          >
-                            {' '}
-                            Table Tennis{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Taekwondo_B"
-                            checked={games['Taekwondo_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Taekwondo_B"
-                          >
-                            {' '}
-                            Taekwondo{' '}
-                          </Label>
-                        </FormGroup>
-
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Volleyball_B"
-                            checked={games['Volleyball_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Volleyball_B"
-                          >
-                            {' '}
-                            Volleyball{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Weightlifting_B"
-                            checked={games['Weightlifting_B']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Weightlifting_B"
-                          >
-                            {' '}
-                            Weightlifting{' '}
-                          </Label>
-                        </FormGroup>
+                        {GAMES.boys.map((game) => {
+                          return (
+                            <FormGroup
+                              key={game + '_B'}
+                              className={`${styles['input-wrapper']}`}
+                            >
+                              <Input
+                                type="checkbox"
+                                id={game + '_B'}
+                                checked={games[game + '_B']}
+                                onChange={changeHandler}
+                              />
+                              <Label
+                                className={`${styles['sports-label']}`}
+                                for={game + '_B'}
+                              >
+                                {game}
+                              </Label>
+                            </FormGroup>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -449,212 +202,35 @@ function EventsEdit() {
                     style={{ color: '#59ba00' }}
                   >
                     <FaFemale /> <b>Girls </b>
-                    {showGirlsSpinner && <Spinner size="sm" />}
                   </h4>
                 </div>
-                <Collapse isOpen={showGirls}>
+                <Collapse isOpen={showGirls }>
                   <div className={`${styles['panel-body']}`}>
                     <div className="row xs-1 sm-2">
                       <div className={`col-sm-6 ${styles.container}`}>
-                        {/* <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Aquatics_G"
-                            checked={games['Aquatics_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Aquatics_G"
-                          >
-                            {' '}
-                            Aquatics{' '}
-                          </Label>
-                        </FormGroup> */}
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Athletics_G"
-                            checked={games['Athletics_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Athletics_G"
-                          >
-                            {' '}
-                            Athletics{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Badminton_G"
-                            checked={games['Badminton_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Badminton_G"
-                          >
-                            {' '}
-                            Badminton{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Basketball_G"
-                            checked={games['Basketball_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Basketball_G"
-                          >
-                            {' '}
-                            Basketball{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Boxing_G"
-                            checked={games['Boxing_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Boxing_G"
-                          >
-                            {' '}
-                            Boxing{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Kabaddi_G"
-                            checked={games['Kabaddi_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Kabaddi_G"
-                          >
-                            {' '}
-                            Kabaddi{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Kho-Kho_G"
-                            checked={games['Kho-Kho_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Kho-Kho_G"
-                          >
-                            {' '}
-                            Kho-Kho{' '}
-                          </Label>
-                        </FormGroup>
+                        {GAMES.girls.map((game) => {
+                          return (
+                            <FormGroup
+                              key={game + '_G'}
+                              className={`${styles['input-wrapper']}`}
+                            >
+                              <Input
+                                type="checkbox"
+                                id={game + '_G'}
+                                checked={games[game + '_G']}
+                                onChange={changeHandler}
+                              />
+                              <Label
+                                className={`${styles['sports-label']}`}
+                                for={game + '_G'}
+                              >
+                                {game}
+                              </Label>
+                            </FormGroup>
+                          );
+                        })}
                       </div>
-                      <div className={`col-sm-6 ${styles.container}`}>
-                      <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Handball_G"
-                            checked={games['Handball_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Handball_G"
-                          >
-                            {' '}
-                            Handball{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Lawn Tennis_G"
-                            checked={games['Lawn Tennis_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Lawn Tennis_G"
-                          >
-                            {' '}
-                            Lawn Tennis{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Squash_G"
-                            checked={games['Squash_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Squash_G"
-                          >
-                            {' '}
-                            Squash{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Table Tennis_G"
-                            checked={games['Table Tennis_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Table Tennis_G"
-                          >
-                            {' '}
-                            Table Tennis{' '}
-                          </Label>
-                        </FormGroup>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Taekwondo_G"
-                            checked={games['Taekwondo_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Taekwondo_G"
-                          >
-                            {' '}
-                            Taekwondo{' '}
-                          </Label>
-                        </FormGroup>
-
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Volleyball_G"
-                            checked={games['Volleyball_G']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Volleyball_G"
-                          >
-                            {' '}
-                            Volleyball{' '}
-                          </Label>
-                        </FormGroup>
-                      </div>
+                      <div className={`col-sm-6 ${styles.container}`}></div>
                     </div>
                   </div>
                 </Collapse>
@@ -672,58 +248,33 @@ function EventsEdit() {
                     style={{ color: '#59ba00' }}
                   >
                     <b>Mixed </b>
-                    {showMixedSpinner && <Spinner size="sm" />}
                   </h4>
                 </div>
                 <Collapse isOpen={showMixed}>
                   <div className={`${styles['panel-body']}`}>
                     <div className="row xs-1 sm-2">
                       <div className={`col-sm-6 ${styles.container}`}>
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Chess_M"
-                            checked={games['Chess_M']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Chess_M"
-                          >
-                            {' '}
-                            Chess{' '}
-                          </Label>
-                        </FormGroup>
-                        {/* <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Carrom_M"
-                            checked={games['Carrom_M']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Carrom_M"
-                          >
-                            {' '}
-                            Carrom{' '}
-                          </Label>
-                        </FormGroup> */}
-                        <FormGroup className={`${styles['input-wrapper']}`}>
-                          <Input
-                            type="checkbox"
-                            id="Cycling_M"
-                            checked={games['Cycling_M']}
-                            onChange={changeHandler}
-                          />
-                          <Label
-                            className={`${styles['sports-label']}`}
-                            for="Cycling_M"
-                          >
-                            {' '}
-                            Cycling{' '}
-                          </Label>
-                        </FormGroup>
+                        {GAMES.mixed.map((game) => {
+                          return (
+                            <FormGroup
+                              key={game + '_M'}
+                              className={`${styles['input-wrapper']}`}
+                            >
+                              <Input
+                                type="checkbox"
+                                id={game + '_M'}
+                                checked={games[game + '_M']}
+                                onChange={changeHandler}
+                              />
+                              <Label
+                                className={`${styles['sports-label']}`}
+                                for={game + '_M'}
+                              >
+                                {game}
+                              </Label>
+                            </FormGroup>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -732,15 +283,26 @@ function EventsEdit() {
             </div>
           </div>
         </div>
+        <ErrorMessage message={errorMessage} />
         <Button
           color="success"
           style={{ fontWeight: 'bold', width: 'fit-content' }}
           className="mt-4"
           onClick={submitHandler}
+          disabled={loading}
         >
           Submit
         </Button>
       </div>
+    </div>
+  );
+}
+
+function ErrorMessage({ message }) {
+  if (message === '') return null;
+  return (
+    <div className={styles['error-message']}>
+      <p>{message}</p>
     </div>
   );
 }

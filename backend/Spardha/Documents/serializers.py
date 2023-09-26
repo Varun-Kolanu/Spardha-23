@@ -10,4 +10,4 @@ class DocumentUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Document
-        fields = ("is_verified", "verified_by")
+        fields = ("is_verified", "verified_by", "is_rejected", "comments")

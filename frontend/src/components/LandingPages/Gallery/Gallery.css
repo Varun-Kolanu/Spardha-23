@@ -1,9 +1,4 @@
-#gallery {
-  background-image: url('./../../../assets/bg/bg_football.jpg');
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
+
 
 .container_gallery {
   width: 100%;
@@ -11,6 +6,9 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+background-color: #ded1dee5;
+border-radius: 20px;
+
 }
 
 @media (min-width: 576px) {
@@ -112,9 +110,7 @@
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
 }
 
-.tz-gallery img {
-  border-radius: 4px;
-}
+
 
 .image-popup_gallery {
   cursor: -webkit-zoom-in;
@@ -142,7 +138,7 @@
 }
 
 .padSect {
-  padding: 7em 0;
+
   position: relative;
 }
 

@@ -1,10 +1,54 @@
+hr {
+  width: 90%;
+}
+.heading123 {
+  color: #760e53;
+  padding-top: 2%;
+}
 #contactus {
   position: fixed;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  padding-right: 1%;
+  background-color: #ffffff;
+  opacity: 0.8;
+  border-radius: 8px;
+  height: 80%;
+  margin: 100px 200px 32px 200px;
+  font-size: small;
+  position: fixed;
+}
+.content123 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+  overflow-y: auto;
+  padding-right: 4rem;
+}
+.content123::-webkit-scrollbar {
+  width: 10px;
+  margin-left: 10px;
+}
+
+.content123::-webkit-scrollbar-thumb {
+  background-color: #760e53;
+  border-radius: 200px;
+}
+.events,
+.convenor,
+.links {
+  border-bottom: 2px solid black;
+  padding: 4vh 0.5vw;
+  height: 50%;
+}
+
 .ftco_footer {
   font-size: 16px;
-  padding: 1em 0;
-  background: #120f0f;
+  /* padding: 1em 0; */
+  background: #120f0f40;
   display: block;
   box-sizing: border-box;
 }
@@ -12,10 +56,12 @@
 .ftco_section {
   position: relative;
 }
-
-.h2 {
-  color: #7ed321;
-  font-weight: normal;
+.logo {
+  padding: 5%;
+}
+.h1 {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
   margin-top: 50px;
   margin-bottom: 40px;
   font-size: 20px;
@@ -24,61 +70,46 @@
   text-transform: uppercase;
   letter-spacing: 3px;
 }
-
+.links {
+  text-align: left;
+}
+i {
+  margin-right: 25px;
+}
 .block_23 {
   padding: 0;
 }
-
-.icons {
-  color: #ffffff;
-  /* margin: 5px; */
-  margin-right: 10px;
-  margin-top: 5px;
-  vertical-align: top;
+.name {
+  color: #760e53;
+  font-weight: bold;
 }
-
-.icons_lower {
-  color: #ffffff;
-  /* margin: 5px; */
-  margin-right: 25px;
-  margin-top: 5px;
-  vertical-align: top;
-  width: 35px;
-  height: auto;
+i {
+  padding: 3%;
 }
-
+.socialmedia {
+  padding: 5%;
+  filter: grayscale(100%);
+}
+.socialmedia:hover {
+  scale: 1.1;
+  filter: grayscale(0%);
+}
 .text {
   display: table-cell;
   vertical-align: top;
   color: #ffffff;
   font-size: 16px;
 }
-
-.mt-2 {
-  margin-top: 0.5rem !important;
-}
-
 .ftco_foote_social {
   padding-left: none;
   margin-bottom: 1rem;
   box-sizing: border-box;
 }
-
-.UL {
-  margin-top: 0;
-  margin-top: 1rem;
-}
-
-.mb_4 {
-  margin-bottom: 1.5rem !important;
-}
-
 .img {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
-
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -86,85 +117,77 @@
   /* margin-right: -15px; */
   overflow-x: hidden;
 }
-
-.col_lg_6 {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 30px;
+.link {
+  text-decoration: none;
+  color: black;
 }
-
-.col_md_6 {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-left: 25px;
-}
-
-.mb-5 {
-  margin-bottom: 3rem !important;
-}
-
-.gmap {
-  width: 400px;
-  height: 400px;
-}
-
-@media (min-width: 768px) {
-  .col_md_6 {
-    flex: 0 0 50%;
-    max-width: 40%;
-    margin-left: 50px;
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* margin-top: 80px; */
   }
-
-  .mb_md_5 {
-    margin-bottom: 3 rem !important;
+  h6 {
+    font-size: small;
   }
-
-  .row {
-    margin-left: 25px;
+  .content123 {
+    width: 100%;
   }
-
-  /* .text{
-        font-size: 18px;
-    } */
-
-  .gmap {
-    width: 300px;
-    height: 300px;
+  .convpubl,
+  .evehosp,
+  .linkfollow {
+    width: 100%;
+  }
+  .events,
+  .hospitality,
+  .publicity,
+  .convenor,
+  .links {
+    border-bottom: 2px solid black;
+    padding: 2vh 0.5vw;
+    height: fit-content;
+  }
+  .events,
+  .hospitality,
+  .publicity,
+  .convenor {
+    text-align: left;
   }
 }
-
+@media (max-width: 320px) {
+  .container {
+    margin-left: 4%;
+    margin-right: 4%;
+  }
+}
+@media (max-width: 730px) {
+  .container{
+    margin: 100px 100px 32px 100px;
+  }
+}
+@media (max-width: 540px) {
+  .container{
+    margin: 100px 50px 32px 50px;
+  }
+}
 @media (max-width: 450px) {
-  .gmap {
-    width: 250px;
-    height: 250px;
+  .container{
+    margin: 100px 30px 32px 30px;
   }
 }
-
-@media (max-width: 280px) {
-  .gmap {
-    width: 200px;
-    height: 200px;
+@media (max-width: 395px) {
+  .container{
+    margin: 100px 11px 32px 11px;
   }
 }
-
-@media (min-width: 992px) {
-  .row {
-    margin-left: 100px;
-  }
-  .gmap {
-    width: 400px;
-    height: 400px;
+@media (max-width: 350px) {
+  .content123{
+    padding-right: 0px;
   }
 }
-
-@media (min-width: 1120px) {
-  .gmap {
-    width: 500px;
-    width: 500px;
+@media (max-width:1450px) {
+  .links{
+    height: 60%;
   }
 }

@@ -23,14 +23,15 @@ from .utils import Util
 from rest_framework.authtoken.models import Token
 from django.shortcuts import redirect, get_object_or_404
 from django.http import Http404
-from Spardha.settings import BASE_URL_FRONTEND
+from Spardha.settings import BASE_URL_FRONTEND, SENDGRID_VERIFY_ACCOUNT_TEMP_ID, SENDGRID_RESET_ACCOUNT_TEMP_ID, CURRENT_URL_BACKEND
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 # from scripts.user_registration import UsersSheet
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from Spardha.settings import CURRENT_URL_BACKEND, SENDGRID_VERIFY_ACCOUNT_TEMP_ID
 from Services import discord_logger
+
+from Spardha.CustomThrottle import EmailThrottle
 
 token_param = openapi.Parameter('Authorization', openapi.IN_HEADER, description="Token <YourToken>", type=openapi.TYPE_STRING)
 
@@ -119,7 +120,7 @@ def create_auth_token(user):
 
 class RequestPasswordResetEmail(generics.GenericAPIView):
     serializer_class = ResetPasswordEmailSerializer
-
+    throttle_classes = [EmailThrottle]
     @swagger_auto_schema(
         responses={
             200: """{"success": "Link has been sent by email to reset password"}""",
@@ -144,18 +145,17 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
                 "password-reset-confirm", kwargs={"uidb64": uidb64, "token": token}
             )
             absurl = "https://" + current_site + relativeLink
-            email_body = f"""<h2> Spardha'21 </h2>
-                 <br> <strong> Hello {user.name}! </strong>
-                 <br> We have received a request to reset the password of your Spardha account. <br>
-                 Click the link below to proceed further: <br> <a href='{absurl}'>Reset</a> <br>
-                 If you have any questions, please contact us at 
-                 <a href='mailto:info@spardha.org.in'>info@spardha.org.in</a>"""
-            data = {
-                # "email_body": email_body,
-                "to_mail": [user.email],
-                "email_subject": "Reset Your Spardha Password",
+            Temp_Data = {
+                "userName": user.name,
+                "reset-link": absurl
             }
-            Util.send_email(data)
+            data = {
+                "to_mail": [user.email],
+                "template_id": SENDGRID_RESET_ACCOUNT_TEMP_ID,
+                "dynamic_template_data": Temp_Data
+            }
+            # Util.send_email(data)
+            Util.send_email_sendgrid(data)
             return Response(
                 {"success": "Link has been sent by email to reset password"},
                 status=status.HTTP_200_OK,
@@ -262,6 +262,8 @@ class UserUpdateView(generics.GenericAPIView):
             )
 
 
+
+
 def send_verification_mail(user, request):
     uidb64 = urlsafe_base64_encode(smart_bytes(user.id))
     token = PasswordResetTokenGenerator().make_token(user)
@@ -286,7 +288,7 @@ def send_verification_mail(user, request):
 class RegisterView(generics.GenericAPIView):
     queryset = UserAccount.objects.all()
     serializer_class = RegisterSerializer
-
+    throttle_classes = [EmailThrottle]
     @swagger_auto_schema(
         responses={
             200: """{"success": "Verification link has been sent by email!"}""",
@@ -335,7 +337,7 @@ def ActivateAccount(request, uidb64, token):
 class ResendLinkView(generics.GenericAPIView):
     queryset = UserAccount.objects.all()
     serializer_class = ResetPasswordEmailSerializer
-
+    throttle_classes = [EmailThrottle]
     @swagger_auto_schema(
         responses={
             200: """{"success": "Verification link has been sent by email!"}

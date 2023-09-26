@@ -200,3 +200,15 @@
     padding-right: inherit !important;
   }
 }
+
+.btnform{
+  margin-top: 15px;
+  margin-left: -13px;
+  background: limegreen ;
+  border-radius: 100px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px 10px 20px;
+  position: relative;
+}

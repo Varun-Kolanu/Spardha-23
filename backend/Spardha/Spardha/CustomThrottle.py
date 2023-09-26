@@ -1,5 +1,5 @@
-from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
-from collections import defaultdict
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle, SimpleRateThrottle
+
 
 
 class CustomAnonThrottle(AnonRateThrottle):
@@ -24,3 +24,10 @@ class CustomUserThrottle(UserRateThrottle):
             'scope': self.scope,
             'ident': ident
         }
+
+
+class EmailThrottle(SimpleRateThrottle):
+    scope = 'email'
+    rate='5/min'
+    def get_cache_key(self, request, view):
+        return request.data.get('email', 'fallback_request_lacking_email')

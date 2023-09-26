@@ -31,7 +31,7 @@ class TeamSerializer(serializers.ModelSerializer):
     game = serializers.CharField()
     players = serializers.ReadOnlyField()
 
-    def save(self, user, **kwargs):
+    def getSaveData(self, user, **kwargs):
         data = self.validated_data
         try:
             game = data["game"].split("_")
@@ -42,7 +42,7 @@ class TeamSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Invalid Game Name")
         if Team.objects.filter(user=user, game=game).exists():
             raise serializers.ValidationError("Team already exists")
-        team = Team.objects.create(
+        team = Team(
             game=game,
             user=user,
             captain_name="",

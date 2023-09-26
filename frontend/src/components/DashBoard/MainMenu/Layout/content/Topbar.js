@@ -8,6 +8,7 @@ import './Topbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { EventContext } from '../../../../../contexts/EventContext';
 
 const Topbar = ({ toggleSidebar }) => {
   const [open, setOpen] = useState(false);
@@ -21,7 +22,9 @@ const Topbar = ({ toggleSidebar }) => {
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const [user, setUser] = useState('');
-  const [numevents, setNumEvents] = useState('10');
+  const [numevents, setNumEvents] = useState('loading...');
+  const {getEventCount}=React.useContext(EventContext);
+
 
   useEffect(() => {
     axios
@@ -38,7 +41,7 @@ const Topbar = ({ toggleSidebar }) => {
       .catch((err) => {
         console.log('error=', err);
       });
-
+setNumEvents('loading...');
     axios
       .get(`${baseUrl}teams/`, {
         headers: {
@@ -52,13 +55,14 @@ const Topbar = ({ toggleSidebar }) => {
       })
       .catch((err) => {
         console.log('error=', err);
-        if (err.response.status === 404) {
-          setNumEvents(0);
+        if (err.response.status === 404 ||err.response.status === 429) {
+          setNumEvents("error!");
         }
+        
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [getEventCount]);
 
   return (
     <Navbar

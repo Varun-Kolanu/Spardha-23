@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 
 #testimonials {
-  background-image: url('./../../../assets/bg/bg_basketball.jpg');
+  background-image: url('/src/components/LandingPages/Home/Images/bg2.png');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;

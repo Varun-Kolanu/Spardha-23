@@ -1,10 +1,11 @@
-import axios from 'axios';
 import React, { useEffect, useRef } from 'react';
-import { FaAt, FaKey, FaPaperPlane, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { useReducer } from 'react';
+// import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { motion ,AnimatePresence} from "framer-motion";
 import {
   Alert,
+  Button,
   Form,
   FormFeedback,
   FormGroup,
@@ -12,12 +13,18 @@ import {
   InputGroup,
   InputGroupText,
   Label,
-  Button,
+  Row,
 } from 'reactstrap';
-import isAlphanumeric from 'validator/lib/isAlphanumeric';
-import isEmail from 'validator/lib/isEmail';
 import styles from '../Signup/Signup.module.css';
+import {
+  FaEnvelope,
+  FaKey,
+  FaPaperPlane,
+} from 'react-icons/fa';
+import { useReducer } from 'react';
+import isEmail from 'validator/lib/isEmail';
 import { useNavigate } from 'react-router';
+import isAlphanumeric from 'validator/lib/isAlphanumeric';
 
 function Login() {
   const ref_container = useRef();
@@ -52,13 +59,17 @@ function Login() {
       return;
     }
 
-    const baseUrl = process.env.REACT_APP_BASE_URL;
+    let baseUrl = process.env.REACT_APP_BASE_URL;
+    if(baseUrl.substring(baseUrl.length-1)!=="/")
+    baseUrl+='/'
+    console.log(`${baseUrl}auth/login/`);
     axios
       .post(`${baseUrl}auth/login/`, {
         username: username.value,
         password: password.value,
       })
       .then((res) => {
+        console.log("login resp",res)
         localStorage.setItem('token', res.data.token);
         dispatchToast({
           color: 'success',
@@ -118,19 +129,34 @@ function Login() {
     color: 'primary',
     message: '',
   });
-
   return (
-    <div id="loginDiv" ref={ref_container}>
-      <h3 className={`${styles.heading}`}> LOGIN </h3>
-      <hr />
+    <AnimatePresence>
+    <motion.div 
+    id="loginDiv" ref={ref_container} >
+      <div className="col-sm-12">
 
       <Alert
         color="success"
+        className={`${styles['signup_note']} py-2`}
         style={{
-          fontSize: '14px',
-          fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif',
+            fontSize: '14px',
+            height:'80px ! important',
+            fontFamily: 'Poppins, sans-serif',
+            background: "#760E53",
+            color:'#FFFFFF ',
+            fontWeight:'400',
+            borderRadius:'15px',
+            // position: "fixed",
+            // zIndex: 1,
+            // top: "0",
+            // right: "0",
+            // bottom: "0",
+            // left: "0",
+            opacity: "1",
+            transition: "all .2s",
+            visibility:  "visible",
         }}
-        className="py-2"
+        
       >
         {/* <b> Account not yet created? </b>
         Click{' '}
@@ -139,7 +165,12 @@ function Login() {
         </Link>{' '}
         to create one
         <br /> */}
-        <strong> Account not activated? </strong>
+        <motion.div 
+          initial={{opacity:0}}
+          animate={{y:0,opacity:1}}
+          exit={{y:100,opacity:1}}
+          transition={{ duration: 0.5 }}
+        ><strong> Account not activated? </strong>
         Click{' '}
         <Link to="/register/verify" style={{ textDecoration: 'none' }}>
           {' '}
@@ -150,21 +181,9 @@ function Login() {
         <strong>Forgot Password? </strong>Click{' '}
         <Link to="/register/forgot" className="text-decoration-none">
           here
-        </Link>
+        </Link></motion.div>
       </Alert>
-
-      <div class="col-sm-12 text-end">
-        <span
-          style={{
-            color: 'red',
-            fontSize: '14px',
-            fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif',
-          }}
-        >
-          *&nbsp;Mandatory
-        </span>
       </div>
-
       <Form className={`${styles['form-horizontal']}`}>
         <div
           className="col-sm-12 justify-content-center fw-bold d-flex flex-column"
@@ -172,102 +191,417 @@ function Login() {
         >
           <div className={`${styles.panel}`}>
             <div className={`${styles['panel-heading']}`}>
-              <h4
-                className={`${styles['panel-title']} text-center`}
-                style={{ color: '#59ba00' }}
-              >
-                <FaUser /> Login Details
-              </h4>
+              <div className={`${styles['register-page-form-header']}`}>
+                <h4
+                  className={`${styles['panel-title-1']} text-center`}
+                  
+                  
+                >
+                <Link to="/register/signup"  style={{ textDecoration: 'none',color: '#000000'}}>Sign up</Link> 
+                {/* <a href="/register/Signup/newSignup" onClick={()=>navigate("/register/Signup/newSignup")}>sign up</a> */}
+                </h4>
+                <h4
+                  className={`${styles['panel-title-2']} text-center`}
+                  style={{ color: '#760E53'}}
+                >
+                <line color='#760E53'>Login</line>
+                <motion.div className={`${styles['underline']}`} layoutId="underline" transition={{ duration: 0.5 }}/>
+                </h4>
+                <h4
+                  className={`${styles['panel-title-3']} text-center`}
+                  style={{ color: '#000000' }}
+                >
+                <span style={{ color: 'red' }}>*</span>Mandatory
+                </h4>
+              </div>
             </div>
-
+            <div className={styles.abc123}>
+            <AnimatePresence>
+              <motion.div 
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -100, opacity: 0 }}
+            transition={{ duration: 0.5 }}>
             <FormGroup className={`${styles['form-group']}`}>
-              <div className="col-sm-12">
-                <FormGroup className={`${styles['form-group']}`}>
-                  <Label for="username" className={`${styles.label}`}>
-                    Username/Email:&nbsp;
-                    <span style={{ color: 'red' }}>*</span>
-                  </Label>
-                  <InputGroup className={`${styles['input-group']}`}>
-                    <InputGroupText
-                      className={`${styles['form-text']} ${
-                        username.valid && ' text-success border-success'
-                      } ${
-                        username.warning !== '' && ' text-danger border-danger'
-                      }`}
-                    >
-                      <FaAt></FaAt>
-                    </InputGroupText>
-                    <Input
-                      name="username"
-                      id="username"
-                      type="text"
-                      placeholder="Enter your username or email"
-                      value={username.value}
-                      valid={username.warning === '' && username.value !== ''}
-                      invalid={username.warning !== ''}
-                      onChange={(e) => {
-                        dispatchUsername(e.target.value);
-                      }}
-                      bsSize="sm"
-                      className={`${styles['form-control']}`}
-                      required
-                    ></Input>
-                  </InputGroup>
-                  {username.warning !== '' && (
-                    <FormFeedback
-                      className="text-danger d-block fw-bold"
-                      style={{ fontSize: '12px' }}
-                    >
-                      {username.warning}
-                    </FormFeedback>
-                  )}
-                </FormGroup>
-              </div>
+              <Row xs={1} md={1} xl={2}>
+                <div className="col-sm-6">
+                  <FormGroup className={`${styles['form-group']}`}>
+                    <Label for="email" className={`${styles.label}`}>
+                      Username/Email Address:&nbsp;
+                      <span style={{ color: 'red' }}>*</span>
+                    </Label>
+                    <InputGroup className={`${styles['input-group']}`}>
+                      <InputGroupText
+                        className={`${styles['form-text']} ${
+                          username.valid && ' text-success border-success'
+                        } ${
+                          username.warning !== '' && ' text-danger border-danger'
+                        }`}
+                      >
+                        <FaEnvelope></FaEnvelope>
+                      </InputGroupText>
+                      <Input
+                        name="username"
+                        id="username"
+                        type="text"
+                        placeholder="Enter Your Username or Email"
+                        value={username.value}
+                        valid={username.warning === '' && username.value !== ''}
+                        invalid={username.warning !== ''}
+                        onChange={(e) => {
+                          dispatchUsername(e.target.value);
+                        }}
+                        bsSize="sm"
+                        className={`${styles['form-control']}`}
+                        required
+                      ></Input>
+                    </InputGroup>
+                    {username.warning !== '' && (
+                      <FormFeedback
+                        className="text-danger d-block fw-bold"
+                        style={{ fontSize: '12px' }}
+                      >
+                        {username.warning}
+                      </FormFeedback>
+                    )}
+                  </FormGroup>
+                </div>
 
-              <div className="col-sm-12">
-                <FormGroup className={`${styles['form-group']}`}>
-                  <Label for="password" className={`${styles.label}`}>
-                    Password:&nbsp;
-                    <span style={{ color: 'red' }}>*</span>
-                  </Label>
-                  <InputGroup className={`${styles['input-group']}`}>
-                    <InputGroupText
-                      className={`${styles['form-text']} ${
-                        password.valid && ' text-success border-success'
-                      } ${
-                        password.warning !== '' && ' text-danger border-danger'
-                      }`}
-                    >
-                      <FaKey></FaKey>
-                    </InputGroupText>
-                    <Input
-                      name="password"
-                      id="password"
-                      type="password"
-                      placeholder="Enter the Password"
-                      value={password.value}
-                      valid={password.warning === '' && password.value !== ''}
-                      invalid={password.warning !== ''}
-                      onChange={(e) => {
-                        dispatchpassword(e.target.value);
-                      }}
-                      bsSize="sm"
-                      className={`${styles['form-control']}`}
-                      required
-                    ></Input>
-                  </InputGroup>
-                  {password.warning !== '' && (
-                    <FormFeedback
-                      className="text-danger d-block fw-bold"
-                      style={{ fontSize: '12px' }}
-                    >
-                      {password.warning}
-                    </FormFeedback>
-                  )}
-                </FormGroup>
-              </div>
-            </FormGroup>
+                {/* <div className="col-sm-6">
+                  <FormGroup className={`${styles['form-group']}`}>
+                    <Label for="username" className={`${styles.label}`}>
+                      Username:&nbsp;
+                      <span style={{ color: 'red' }}>*</span>
+                    </Label>
+                    <InputGroup className={`${styles['input-group']}`}>
+                      <InputGroupText
+                        className={`${styles['form-text']} ${
+                          username.valid && ' text-success border-success'
+                        } ${
+                          username.warning !== '' &&
+                          ' text-danger border-danger'
+                        }`}
+                      >
+                        <FaAt></FaAt>
+                      </InputGroupText>
+                      <Input
+                        name="username"
+                        id="username"
+                        type="text"
+                        placeholder="Enter your username"
+                        value={username.value}
+                        valid={username.warning === '' && username.value !== ''}
+                        invalid={username.warning !== ''}
+                        onChange={(e) => {
+                          dispatchUsername(e.target.value);
+                        }}
+                        bsSize="sm"
+                        className={`${styles['form-control']}`}
+                        required
+                      ></Input>
+                    </InputGroup>
+                    {username.warning !== '' && (
+                      <FormFeedback
+                        className="text-danger d-block fw-bold"
+                        style={{ fontSize: '12px' }}
+                      >
+                        {username.warning}
+                      </FormFeedback>
+                    )}
+                  </FormGroup>
+                </div> */}
+              </Row>
+
+              <Row xs={1} md={1} xl={2}>
+                <div className="col-sm-6">
+                  <FormGroup className={`${styles['form-group']}`}>
+                    <Label for="password" className={`${styles.label}`}>
+                      Password:&nbsp;
+                      <span style={{ color: 'red' }}>*</span>
+                    </Label>
+                    <InputGroup className={`${styles['input-group']}`}>
+                      <InputGroupText
+                        className={`${styles['form-text']} ${
+                          password.valid && ' text-success border-success'
+                        } ${
+                          password.warning !== '' &&
+                          ' text-danger border-danger'
+                        }`}
+                      >
+                        <FaKey></FaKey>
+                      </InputGroupText>
+                      <Input
+                        name="password"
+                        id="password"
+                        type="password"
+                        placeholder="Enter the Password"
+                        value={password.value}
+                        valid={
+                          password.warning === '' && password.value !== ''
+                        }
+                        invalid={password.warning !== ''}
+                        onChange={(e) => {
+                          dispatchpassword(e.target.value);
+                        }}
+                        bsSize="sm"
+                        className={`${styles['form-control']}`}
+                        required
+                      ></Input>
+                    </InputGroup>
+                    {password.warning !== '' && (
+                      <FormFeedback
+                        className="text-danger d-block fw-bold"
+                        style={{ fontSize: '12px' }}
+                      >
+                        {password.warning}
+                      </FormFeedback>
+                    )}
+                  </FormGroup>
+                </div>
+
+                {/* <div className="col-sm-6">
+                  <FormGroup className={`${styles['form-group']}`}>
+                    <Label for="password2" className={`${styles.label}`}>
+                      Password Confirmation:&nbsp;
+                      <span style={{ color: 'red' }}>*</span>
+                    </Label>
+                    <InputGroup className={`${styles['input-group']}`}>
+                      <InputGroupText
+                        className={`${styles['form-text']} ${
+                          password2.valid && ' text-success border-success'
+                        } ${
+                          password2.warning !== '' &&
+                          ' text-danger border-danger'
+                        }`}
+                      >
+                        <FaKey></FaKey>
+                      </InputGroupText>
+                      <Input
+                        name="password2"
+                        id="password2"
+                        type="password"
+                        placeholder="Confirm your Password"
+                        value={password2.value}
+                        valid={
+                          password2.warning === '' && password2.value !== ''
+                        }
+                        invalid={password2.warning !== ''}
+                        onChange={(e) => {
+                          dispatchPassword2(e.target.value);
+                        }}
+                        bsSize="sm"
+                        className={`${styles['form-control']}`}
+                        required
+                      ></Input>
+                    </InputGroup>
+                    {password2.warning !== '' && (
+                      <FormFeedback
+                        className="text-danger d-block fw-bold"
+                        style={{ fontSize: '12px' }}
+                      >
+                        {password2.warning}
+                      </FormFeedback>
+                    )}
+                  </FormGroup>
+                </div> */}
+              </Row>
+
+              {/* <Row xs={1} md={1} xl={2}>
+                <div className="col-sm-6">
+                  <FormGroup className={`${styles['form-group']}`}>
+                    <Label for="name" className={`${styles.label}`}>
+                      Name:&nbsp;
+                      <span style={{ color: 'red' }}>*</span>
+                    </Label>
+                    <InputGroup className={`${styles['input-group']}`}>
+                      <InputGroupText
+                        className={`${styles['form-text']} ${
+                          name.valid && ' text-success border-success'
+                        } ${
+                          name.warning !== '' && ' text-danger border-danger'
+                        }`}
+                      >
+                        <FaUser></FaUser>
+                      </InputGroupText>
+                      <Input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Enter your Name"
+                        value={name.value}
+                        valid={name.warning === '' && name.value !== ''}
+                        invalid={name.warning !== ''}
+                        onChange={(e) => {
+                          dispatchName(e.target.value);
+                        }}
+                        bsSize="sm"
+                        className={`${styles['form-control']}`}
+                        required
+                      ></Input>
+                    </InputGroup>
+                    {name.warning !== '' && (
+                      <FormFeedback
+                        className="text-danger d-block fw-bold"
+                        style={{ fontSize: '12px' }}
+                      >
+                        {name.warning}
+                      </FormFeedback>
+                    )}
+                  </FormGroup>
+                </div>
+
+                <div className="col-sm-6">
+                  <FormGroup className={`${styles['form-group']}`}>
+                    <Label for="designation" className={`${styles.label}`}>
+                      Designation:&nbsp;
+                      <span style={{ color: 'red' }}>*</span>
+                    </Label>
+                    <InputGroup className={`${styles['input-group']}`}>
+                      <InputGroupText
+                        className={`${styles['form-text']} ${
+                          designation.valid && ' text-success border-success'
+                        } ${
+                          designation.warning !== '' &&
+                          ' text-danger border-danger'
+                        }`}
+                      >
+                        <FaBriefcase></FaBriefcase>
+                      </InputGroupText>
+                      <Input
+                        type="designation"
+                        name="designation"
+                        id="designation"
+                        placeholder="Write your Designation"
+                        value={designation.value}
+                        valid={
+                          designation.warning === '' && designation.value !== ''
+                        }
+                        invalid={designation.warning !== ''}
+                        onChange={(e) => {
+                          dispatchDesignation(e.target.value);
+                        }}
+                        bsSize="sm"
+                        className={`${styles['form-control']}`}
+                        required
+                      ></Input>
+                    </InputGroup>
+                    {designation.warning !== '' && (
+                      <FormFeedback
+                        className="text-danger d-block fw-bold"
+                        style={{ fontSize: '12px' }}
+                      >
+                        {designation.warning}
+                      </FormFeedback>
+                    )}
+                  </FormGroup>
+                </div>
+              </Row>
+
+              <Row xs={1} md={1} xl={2}>
+                <div className="col-sm-6">
+                  <FormGroup className={`${styles['form-group']}`}>
+                    <Label for="institute" className={`${styles.label}`}>
+                      Institute Name:&nbsp;
+                      <span style={{ color: 'red' }}>*</span>
+                    </Label>
+                    <InputGroup className={`${styles['input-group']}`}>
+                      <InputGroupText
+                        className={`${styles['form-text']} ${
+                          institute.valid && ' text-success border-success'
+                        } ${
+                          institute.warning !== '' &&
+                          ' text-danger border-danger'
+                        }`}
+                      >
+                        <FaBuilding></FaBuilding>
+                      </InputGroupText>
+                      <Input
+                        type="text"
+                        name="institute"
+                        id="institute"
+                        placeholder="Select / Enter your Institute & City"
+                        value={institute.value}
+                        valid={
+                          institute.warning === '' && institute.value !== ''
+                        }
+                        invalid={institute.warning !== ''}
+                        onChange={(e) => {
+                          dispatchInstitute(e.target.value);
+                        }}
+                        bsSize="sm"
+                        list="instituteList"
+                        className={`${styles['form-control']}`}
+                        required
+                      ></Input>
+                      <datalist id="instituteList">
+                        <option selected={true} disabled>
+                          Select your institute
+                        </option>
+                        {instituteList.map(({ id, name }) => {
+                          return <option value={name} key={id}></option>;
+                        })}
+                      </datalist>
+                    </InputGroup>
+                    {institute.warning !== '' && (
+                      <FormFeedback
+                        className="text-danger d-block fw-bold"
+                        style={{ fontSize: '12px' }}
+                      >
+                        {institute.warning}
+                      </FormFeedback>
+                    )}
+                  </FormGroup>
+                </div>
+
+                <div className="col-sm-6">
+                  <FormGroup className={`${styles['form-group']}`}>
+                    <Label for="phone" className={`${styles.label}`}>
+                      Phone Number:&nbsp;
+                      <span style={{ color: 'red' }}>*</span>
+                    </Label>
+                    <InputGroup className={`${styles['input-group']}`}>
+                      <InputGroupText
+                        className={`${styles['form-text']} ${
+                          phone.valid && ' text-success border-success'
+                        } ${
+                          phone.warning !== '' && ' text-danger border-danger'
+                        }`}
+                      >
+                        <FaPhone></FaPhone>
+                      </InputGroupText>
+                      <Input
+                        type="tel"
+                        name="phone"
+                        id="phone"
+                        placeholder="Enter Your Phone No."
+                        value={phone.value}
+                        valid={phone.warning === '' && phone.value !== ''}
+                        invalid={phone.warning !== ''}
+                        onChange={(e) => {
+                          dispatchPhone(e.target.value);
+                        }}
+                        bsSize="sm"
+                        className={`${styles['form-control']}`}
+                        required
+                      ></Input>
+                    </InputGroup>
+                    {phone.warning !== '' && (
+                      <FormFeedback
+                        className="text-danger d-block fw-bold"
+                        style={{ fontSize: '12px' }}
+                      >
+                        {phone.warning}
+                      </FormFeedback>
+                    )}
+                  </FormGroup>
+                </div>
+              </Row> */}
+            </FormGroup></motion.div></AnimatePresence>
+            </div>
           </div>
+
+          
+
           {toast.message !== '' && (
             <Alert
               color={toast.color}
@@ -287,7 +621,7 @@ function Login() {
             onClick={submitHandler}
           >
             <FaPaperPlane color="white" className="me-1"></FaPaperPlane>
-            LOGIN
+            Login
           </Button>
           {<b
             style={{
@@ -303,7 +637,8 @@ function Login() {
           </b>}
         </div>
       </Form>
-    </div>
+    </motion.div>
+    </AnimatePresence>
   );
 }
 

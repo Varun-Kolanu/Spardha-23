@@ -20,7 +20,7 @@
 }
 
 .ftco-section {
-  background: url(../../../assets/bg/bg_football.jpg) fixed center center/cover;
+  /* background: url(../../../assets/bg/bg_football.jpg) fixed center center/cover; */
   padding: 4em 0;
   position: relative;
 }
@@ -39,7 +39,8 @@
 .team-heading {
   font-family: 'League Spartan';
   font-weight: bolder;
-  color: #6db549;
+  /* color: #6db549; */
+  color: white;
   font-size: 30px;
   padding-top: 55px;
 }
@@ -51,5 +52,15 @@
 
   .subheading {
     font-size: 40px !important;
+  }
+}
+body {
+  max-width: calc(100vw - 17px);
+}
+
+@media (pointer: coarse) {
+
+  body {
+width: 100vw;
   }
 }

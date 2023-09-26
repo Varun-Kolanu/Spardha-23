@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .wrap-container {
@@ -6,7 +7,8 @@
 
 .nav-links {
   text-decoration: none;
-  letter-spacing: 1px;
+  text-transform: uppercase;
+  /*letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 14px;
   padding: 0.7rem 0px;
@@ -14,12 +16,25 @@
   font-weight: 600;
   font-family: 'Barlow Semi Condensed', Arial, sans-serif;
   opacity: 1 !important;
-  transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out; */
+  color: #fff;
+  font-family: 'Helvetica Compressed', Arial, sans-serif;
+  font-size: 132%;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 70px; /* 233.333% */
+  padding-bottom: 3px;
 }
-
-.nav-links:hover,
+.nav-links:hover {
+  border-bottom: 3px solid red !important;
+}
+/*
 .nav-links:focus {
-  color: #6db549 !important;
+  /* color: #6db549 !important; *
+}*/
+
+.navbar{
+  width: 100%;
 }
 
 .navbar-toggler {
@@ -29,6 +44,7 @@
   text-transform: uppercase;
   font-size: 16px;
   letter-spacing: 0.1em;
+  border: none !important;
 }
 
 .navbar-toggler-active {
@@ -42,20 +58,34 @@
 
 .navbar-toggler span {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  position:absolute;
+  right:25px;
+  top:4vh;
+  
 }
 
-.navbar-toggler-active span {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+.navbar-toggler-open span {
+  /* background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); */
+  background-image: url('../../../../public/images/icons/cross.png');
+  position:absolute;
+  right:25px;
+  top:4vh;
+
 }
 
 .navbar-toggler:active,
 .navbar-toggler:focus {
-  box-shadow: none;
+  box-shadow: none !important; 
+  outline: 0;
+  
 }
-
+.mini-nav-items:hover{
+  color:  red;
+}
 .navbar-toggler-active:active,
-.navbar-toggler-active:focus {
+.navbar-toggler-open:focus {
   box-shadow: none;
+  outline: 0;
 }
 
 .navbar-nav {
@@ -66,30 +96,102 @@
 .nav-items {
   box-sizing: border-box;
   margin: 0.525rem 0px !important;
+  align-items: center !important;
 }
 
 .wrap-container {
   padding: 0 0 !important;
 }
 
+.nav-contain{
+  display: flex;
+  flex-direction: row;
+}
+
+.mini-nav-items{
+  margin: 20px 30% 4px 30%;
+}
+.mini-navbar-nav{
+  margin-right: 20px;
+  flex-direction: row;
+}
 @media only screen and (min-width: 776px) {
   .wrap-container {
-    padding: 0px 14px !important;
+    padding: 10px 14px 5px 0px !important;
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 993px) {
   .navbar-nav {
     padding-top: 0px;
     padding-bottom: 0px;
   }
 
   .nav-links {
-    padding: 0.7rem 20px;
+    /* padding: 0.7rem 20px; */
+    margin-top: 0.7rem;
+    margin: 0px 13px ;
   }
 
   .nav-items {
     box-sizing: border-box;
     margin: 0px 0px !important;
+
+  }
+}
+@media (max-width : 993px) {
+  .nav-links{
+    /* font-size: 16px; */
+    color: #000;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 4vh;
+margin: 0px 5px ;
+border-bottom: 1px solid black;
+padding: 3px 38px;
+width: 150px;
+text-transform: none;
+display: flex;
+flex-direction: row;
+justify-content: center;
+font-family: 'Montserrat';
+  }
+  .nav-links:hover {
+    border-bottom: none;
+  }
+  .navbar-nav{
+    height: 100vh;
+    align-items: center;
+  }
+  .side{
+    width: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .mini-navbar-nav{
+    margin-right: 83px;
+  }
+  .mini-nav-items:hover{
+    border-bottom: none;
+  }
+  .nav-links:hover {
+    border-bottom: none;
+  }
+  /* .navbar-collapse{
+    width: 50%;
+    display: flex;
+  } */
+}
+@media only screen and (min-width: 1280px) {
+  /* CSS styles for large desktops and monitors */
+}
+.icons_lower:hover {
+color: red;
+}
+@media (max-width:1120px) {
+  .nav-links{
+    font-size: 110%;
   }
 }

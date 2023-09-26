@@ -20,7 +20,7 @@ const SliderGuests = () => {
           >
             <h3
               className="subheading_guests"
-              style={{ color: '#6db549', fontWeight: '900' }}
+              style={{ color: 'white', fontWeight: '900' }}
             >
               What They're Saying
             </h3>

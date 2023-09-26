@@ -39,8 +39,8 @@ const ShowallTable = () => {
             <th>S.No</th>
               <th>Name</th>
               <th>Institute</th>
+              <th>Phone Number</th>
               <th>Designation</th>
-              {/* <th>Phone</th> */}
             </tr>
           </thead>
           <tbody>
@@ -49,8 +49,8 @@ const ShowallTable = () => {
                 <td data-label="S.No">{index + 1}</td>
                 <td data-label="Name">{user.name}</td>
                 <td data-label="">{user.institution_name}</td>
+                <td data-label="Phone Number">{user.phone_no}</td>
                 <td data-label="">{user.designation}</td>
-                {/* <td data-label="">{user.phone_no}</td> */}
               </tr>
             ))}
           </tbody>
