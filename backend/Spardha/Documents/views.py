@@ -16,7 +16,7 @@ class AllDocumentView(generics.GenericAPIView):
     )
     def get(self, request):
         if request.user.is_staff or request.user.is_admin:
-            documents = Document.objects.all()
+            documents = Document.objects.select_related("verified_by")
             serializer = AllDocumentSerializer(documents, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
@@ -50,11 +50,14 @@ class DocumentView(generics.GenericAPIView):
     )
     def patch(self, request, id):
         try:
+            data_to_modify = request.data
+            data_to_modify["verified_by"] = request.user.id
             document_to_verify = Document.objects.get(id=id)
             document_to_verify.verification_time = timezone.now()
-            serializer = self.get_serializer(document_to_verify, data=request.data,partial=True)
+            serializer = self.get_serializer(document_to_verify, data=data_to_modify,partial=True)
             serializer.is_valid(raise_exception=True)
             document=serializer.save()
             return Response({"success": "Document's verification status has been updated successfully"}, status=status.HTTP_204_NO_CONTENT)
-        except:
+        except Exception as e:
+            print(e)
             return Response({"error": "The Document does not exist"}, status=status.HTTP_404_NOT_FOUND)
