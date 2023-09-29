@@ -132,3 +132,6 @@ class UserSerializer(serializers.Serializer):
         user.phone_no = validated_data["phone_no"]
         user.save()
         return user
+
+class DummySerializer(serializers.Serializer):
+    pass
