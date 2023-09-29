@@ -7,6 +7,7 @@ from .serializers import (
     check,
     LoginSerializer,
     UserSerializer,
+    DummySerializer
 )
 from .models import UserAccount
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -409,11 +410,12 @@ class DeleteAccountView(generics.GenericAPIView):
             )
 
 class StatusCheck(generics.GenericAPIView):
+    serializer_class = DummySerializer
     def get(request, user):
         return Response(
                     status = status.HTTP_200_OK,
                 )
-    
+
 class AllUsersView(generics.GenericAPIView):
     queryset = UserAccount.objects.all()
     serializer_class = UserSerializer
@@ -428,9 +430,3 @@ class AllUsersView(generics.GenericAPIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response({"error": "You are not allowed to access this endpoint"}, status=status.HTTP_403_FORBIDDEN)
-
-class StatusCheck(generics.GenericAPIView):
-    def get(request, user):
-        return Response(
-                    status = status.HTTP_200_OK,
-                )

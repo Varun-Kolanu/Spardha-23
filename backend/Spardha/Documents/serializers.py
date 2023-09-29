@@ -1,15 +1,16 @@
 from rest_framework import serializers
 from .models import Document, UserAccount
 
-class AllDocumentSerializer(serializers.Serializer):
+class AllDocumentSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()
     user_id = serializers.PrimaryKeyRelatedField(queryset=UserAccount.objects.all())
     document = serializers.JSONField()
     is_verified = serializers.BooleanField(default=False)
+    verified_by = serializers.PrimaryKeyRelatedField(queryset=UserAccount.objects.all())
+    verified_by_name = serializers.SerializerMethodField()
     verification_time = serializers.DateTimeField()
     is_rejected = serializers.BooleanField(default=False)
     comments = serializers.CharField()
-    verified_by_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Document
