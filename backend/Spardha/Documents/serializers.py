@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import Document, UserAccount
 
 class AllDocumentSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField()
     user_id = serializers.PrimaryKeyRelatedField(queryset=UserAccount.objects.all())
     document = serializers.JSONField()
     is_verified = serializers.BooleanField(default=False)
