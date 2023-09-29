@@ -7,6 +7,7 @@
   max-width: 250px;
   padding-bottom: 10px;
   margin: auto;
+  width: 300px !important;
 }
 
 .staff .info {
@@ -29,7 +30,7 @@
   line-height: 1.2;
   color: inherit;
   font-size: 0.95rem !important;
-  color: #6db549;
+  color: purple;
 }
 
 .img {
@@ -40,18 +41,17 @@
   border-style: none;
   border-radius: 10px;
 }
-
 .links {
   color: #555;
-  padding: 0 10px;
+  padding: 0 2px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 400;
   cursor: pointer;
 }
 
 .links:hover {
-  color: #6db549;
+  color: purple;
 }
 
 @media only screen and (min-width: 992px) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Img1 from '../Images/bg.webp';
-import Img2 from '../Images/bg2.png';
+import Img1 from '../Images/IMG-20230924-WA0009.jpg';
+import Img2 from '../Images/IMG-20230924-WA0010.jpg';
 import './Carouselhp.css';
 
 function Carousel() {
@@ -15,17 +15,17 @@ function Carousel() {
     return () => {
       clearInterval(interval);
     };
-  }, [currentSlide,images.length]);
+  }, [currentSlide, images.length]);
 
   return (
     <div className="carousel-home">
-   
+
       <img
         className="carousel-image-home"
         src={images[currentSlide]}
         alt={`Slide ${currentSlide + 1}`}
       />
-   
+
     </div>
   );
 }

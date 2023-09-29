@@ -8,12 +8,13 @@ function Mid() {
 
       <div className="container-home">
         <div className="left-box">
-          <div className="heading1">SPARDHA 2023 <br />MOULDING CHAMPIONS</div>
+          <div className="heading1">SPARDHA 2023 <br />
+          <div className='subheading1'>MOULDING CHAMPIONS</div></div>
           <div className="description">Annual sports festival of IIT (BHU) under the Games and Sports Council.</div>
 
           <div className="button-container">
           <NavHashLink
-                        to="/register/signup#register"><button className="btn1">LOGIN/SIGNUP</button></NavHashLink>
+                        to="/register/signup#register"><button className="btn1">LOGIN&nbsp;/&nbsp;SIGNUP</button></NavHashLink>
 
 
         

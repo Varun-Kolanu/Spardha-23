@@ -1,5 +1,5 @@
 {
-  "conveners": [
+  "Conveners": [
     {
       "post": "convener",
       "name": "Himanshu Ranjan",
@@ -28,291 +28,42 @@
       "linkedin": " https://www.linkedin.com/in/aditya-ayush-mishra"
     }
   ],
-"games and sports council": [
-  {
-    "post": "general secretary",
-    "name": "Sunil Verma",
-    "phone": "+91-7231889963",
-    "id": "https://www.instagram.com/sunil_verma1610/",
-    "mail": "vermajii1610@gmail.com",
-    "image": "/images/team/Sunil.jpg",
-    "linkedin": "https://www.linkedin.com/in/sunil-verma-0a19121bb/"
-  },
-  {
-    "post": "joint gen secretary",
-    "name": "Tushar Pratap Singh ",
-    "phone": "+91-9997260696",
-    "id": "https://instagram.com/prataptushar19?igshid=OGQ5ZDc2ODk2ZA==",
-    "mail": "tusharpratap.singh.civ20@itbhu.ac.in",
-    "image": "/images/team/Tushar.jpeg",
-    "linkedin": "https://www.linkedin.com/in/tushar-pratap-singh-41155b229/"
-  },
-  {
-    "post": "joint gen secretary",
-    "name": "Parikshit Patil ",
-    "phone": "+91-9373520743",
-    "id": "https://www.instagram.com/1_parikshit/",
-    "mail": "parikshitp.patil.met20@itbhu.ac.in",
-    "image": "/images/team/Parikshit.jpeg",
-    "linkedin": "https://www.linkedin.com/in/parikshit-patil-673ab9208/"
-  },
-  {
-    "post": "joint gen secretary",
-    "name": "Anshpreet Kaur Bal",
-    "phone": "+91-7665268704",
-    "id": "https://www.instagram.com/ansh_bal/",
-    "mail": "Anshpreet.kaurbal.min20@itbhu.ac.in",
-    "image": "/images/team/Anshpreet.jpeg",
-    "linkedin": "https://www.linkedin.com/in/anshpreet-kaur-bal-1b9673200/"
-  }
-],
-"publicity team": [
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  }
-],
-"public relations team": [
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  }
-],
-"marketing team": [
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  }
-],
-"hospitality team": [
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  }
-],
-"events and operations team": [
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  }
-],
-"content writing team": [
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  }
-],
-"technical team": [
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  }
-],
-"creative design team": [
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  }
-],
-"informals team": [
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  },
-  {
-    "name": "Spardha Member",
-    "phone": "123456789",
-    "id": "https://www.facebook.com/<your facebook id>",
-    "mail": "<your email address>",
-    "image": "/images/team/<your image name here with extension(png/jpg/webp)>"
-  }
-]
+  "Council Secretary": [
+    {
+      "post": "general secretary",
+      "name": "Sunil Verma",
+      "phone": "+91-7231889963",
+      "id": "https://www.instagram.com/sunil_verma1610/",
+      "mail": "vermajii1610@gmail.com",
+      "image": "/images/team/Sunil.jpg",
+      "linkedin": "https://www.linkedin.com/in/sunil-verma-0a19121bb/"
+    },
+    {
+      "post": "joint gen secretary",
+      "name": "Tushar Pratap Singh ",
+      "phone": "+91-9997260696",
+      "id": "https://instagram.com/prataptushar19?igshid=OGQ5ZDc2ODk2ZA==",
+      "mail": "tusharpratap.singh.civ20@itbhu.ac.in",
+      "image": "/images/team/Tushar.jpeg",
+      "linkedin": "https://www.linkedin.com/in/tushar-pratap-singh-41155b229/"
+    },
+    {
+      "post": "joint gen secretary",
+      "name": "Parikshit Patil ",
+      "phone": "+91-9373520743",
+      "id": "https://www.instagram.com/1_parikshit/",
+      "mail": "parikshitp.patil.met20@itbhu.ac.in",
+      "image": "/images/team/Parikshit.jpeg",
+      "linkedin": "https://www.linkedin.com/in/parikshit-patil-673ab9208/"
+    },
+    {
+      "post": "joint gen secretary",
+      "name": "Anshpreet Kaur Bal",
+      "phone": "+91-7665268704",
+      "id": "https://www.instagram.com/ansh_bal/",
+      "mail": "Anshpreet.kaurbal.min20@itbhu.ac.in",
+      "image": "/images/team/Anshpreet.jpeg",
+      "linkedin": "https://www.linkedin.com/in/anshpreet-kaur-bal-1b9673200/"
+    }
+  ]
 }

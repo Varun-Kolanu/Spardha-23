@@ -17,10 +17,10 @@
   box-sizing: border-box;
 
 }
-
-.scrollcontainer {
-  padding-top: 10vh;
+.maindiv{
+  padding-top: 5vh;
   width: 95%;
+  align-self: center;
   padding-right: 10px;
   padding-left: 10px;
   margin-left: auto;
@@ -31,6 +31,26 @@ position: relative;
 top: 16vh;
 border-radius: 10px;
   background: #ded1dee5;
+}
+.scrollcontainer {
+  width: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-left: auto;
+  margin-right: auto;
+overflow: auto;
+height: 67vh;
+position: relative;
+border-radius: 10px;
+
+
+
+}
+.container{
+  border-radius: 10px;
+}
+.row{
+  border-radius: 10px;
 }
 /* Customize scrollbar appearance (optional) */
 .scrollcontainer::-webkit-scrollbar {
@@ -167,6 +187,7 @@ border-radius: 10px;
   letter-spacing: 7px;
   text-transform: uppercase;
   font-family: 'Poppins';
+  font-family: 'Poppins';
   margin-top: 5rem !important;
 }
 
@@ -187,6 +208,7 @@ border-radius: 10px;
   letter-spacing: 2px;
   word-spacing: 5px;
   margin-left: 15px;
+  font-family: 'Poppins';
   font-family: 'Poppins';
   font-weight: bold;
   background: #ded1dee5;
@@ -275,6 +297,7 @@ border-radius: 10px;
   padding-bottom: 20px;
   font-size: 17px;
   font-weight: 500;
+  text-align: justify;
 }
 
 .para2 {
@@ -283,6 +306,7 @@ border-radius: 10px;
   padding-bottom: auto;
   font-size: 17px;
   font-weight: 500;
+  text-align: justify;
 }
 
 .para3 {
@@ -291,6 +315,7 @@ border-radius: 10px;
   padding-bottom: auto;
   font-size: 17px;
   font-weight: 500;
+  text-align: justify;
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
@@ -313,4 +338,11 @@ border-radius: 10px;
   flex-direction: row;
   gap: 10px;
   max-width:1120px
+}
+@media (max-width: 768px){
+  .midsection{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }

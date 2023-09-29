@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './Member.module.css';
 import { FaEnvelope, FaLinkedin, FaInstagramSquare } from 'react-icons/fa';
 
-function Member({ post, name, phone, id, mail, image, linkedin }) {
+function Member({ memberData }) {
+  const { name, post, phone, id, mail, image, linkedin } = memberData;
   return (
     <>
       <div
@@ -17,26 +18,27 @@ function Member({ post, name, phone, id, mail, image, linkedin }) {
           />
           <div className="info text-center">
             <h3 className={`p-0 m-0 text-uppercase ${styles.head}`}>
-              {post && (
-                <>
-                  <b>{post}</b> <br />
-                </>
-              )}
-              {name}
+
+              <div>
+                {name} <br />
+              </div>
+              <b>{post}</b>
             </h3>
             <span className="position p-0 m-0">
               <a href={`tel:${phone}`} className={styles.links}>
                 {phone}
               </a>
             </span>
-            <div>
+            <div style={{
+              display: "inline"
+            }}>
               <a
                 href={id}
                 className={styles.links}
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaInstagramSquare/>
+                <FaInstagramSquare />
               </a>
               <a
                 href={`mailto:${mail}`}

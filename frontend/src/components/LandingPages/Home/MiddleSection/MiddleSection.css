@@ -12,7 +12,6 @@ body {
 
   
 }
-
 .container-home {
 	padding-top: 10vh;
 	display: flex;
@@ -147,6 +146,9 @@ width: max-content;
 		font-size: 5.7vw;
 	
 	}
+	.subheading1{
+		font-size: 5vw;
+	}
 	.btn1,.btn2{
 		width: 20vw;
 		padding-left: 0px;
@@ -154,7 +156,7 @@ width: max-content;
 	}
 }
 
-@media (max-width: 950px) and (min-width:790px) {
+@media (max-width: 950px) {
 
 	.container-home {
 		flex-direction: column;
@@ -164,6 +166,9 @@ width: max-content;
 	.heading1 {
 		font-size: 7vh;
 		margin: 5vh 0vw;
+	}
+	.subheading1{
+		font-size: 6vh;
 	}
 
 	.left-box {
@@ -219,7 +224,7 @@ margin: 0px;
 		max-width: 300px;
 	}
 }
-@media (max-width: 790px)  {
+@media (max-aspect-ratio:1)  {
 
 	.container-home {
 		flex-direction: column;
@@ -230,6 +235,9 @@ margin: 0px;
 		font-size: 5vh;
 		margin: 5vh 0vw;
 		line-height: 6vh;
+	}
+	.subheading1{
+		font-size: 4vh;
 	}
 
 	.left-box {

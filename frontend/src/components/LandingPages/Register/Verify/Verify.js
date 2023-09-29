@@ -91,9 +91,11 @@ function Verify() {
         color="success"
         style={{
           fontSize: '14px',
+          backgroundColor: '#760E53',
+          color:'#ffffff',
           fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif',
         }}
-        className="py-2"
+        className="py-2 success"
       >
         Click{' '}
         <Link to="/register/signup" style={{ textDecoration: 'none' }}>
@@ -113,6 +115,8 @@ function Verify() {
         className="py-2"
         style={{
           fontSize: '14px',
+          backgroundColor: '#760E53',
+          color:'#ffffff',
           fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif',
         }}
       >
@@ -122,7 +126,7 @@ function Verify() {
       <div class="col-sm-12 text-end">
         <span
           style={{
-            color: 'red',
+            color: 'black',
             fontSize: '14px',
             fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif',
           }}
@@ -140,12 +144,12 @@ function Verify() {
             <div className={`${styles['panel-heading']}`}>
               <h4
                 className={`${styles['panel-title']} text-center`}
-                style={{ color: '#59ba00' }}
+                style={{ color: '#760E53' }}
               >
                 <FaUser /> Login Details
               </h4>
             </div>
-
+            <div className={styles.abc123}>
             <FormGroup className={`${styles['form-group']}`}>
               <div className="col-sm-12">
                 <FormGroup className={`${styles['form-group']}`}>
@@ -190,6 +194,7 @@ function Verify() {
                 </FormGroup>
               </div>
             </FormGroup>
+            </div>
           </div>
 
           {toast.message !== '' && (

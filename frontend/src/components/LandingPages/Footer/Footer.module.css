@@ -93,6 +93,7 @@ i {
 .socialmedia:hover {
   scale: 1.1;
   filter: grayscale(0%);
+  transition: 300ms;
 }
 .text {
   display: table-cell;

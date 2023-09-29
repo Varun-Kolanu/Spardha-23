@@ -87,139 +87,139 @@ const Events = () => {
   const [showResults16, setShowResults16] = useState(false);
   const [showResults17, setShowResults17] = useState(false);
   const [showResults18, setShowResults18] = useState(false);
-const[athletics1,setathletics1]=useState(athletics);
-const athleticsMouseEnter = () => {
-  setathletics1(athleticshover);
-};
-const athleticsMouseLeave = () => {
-  setathletics1(athletics);
-};
-const[basketball1,setbasketball1]=useState(basketball);
-const basketballMouseEnter = () => {
-  setbasketball1(basketballhover);
-};
-const basketballMouseLeave = () => {
-  setbasketball1(basketball);
-};
-const[badminton1,setbadminton1]=useState(badminton);
-const badmintonMouseEnter = () => {
-  setbadminton1(badmintonhover);
-};
-const badmintonMouseLeave = () => {
-  setbadminton1(badminton);
-};
-const[boxing1,setboxing1]=useState(boxing);
-const boxingMouseEnter = () => {
-  setboxing1(boxinghover);
-};
-const boxingMouseLeave = () => {
-  setboxing1(boxing);
-};
-const[cricket1,setcricket1]=useState(cricket);
-const cricketMouseEnter = () => {
-  setcricket1(crickethover);
-};
-const cricketMouseLeave = () => {
-  setcricket1(cricket);
-};
-const[football1,setfootball1]=useState(football);
-const footballMouseEnter = () => {
-  setfootball1(footballhover);
-};
-const footballMouseLeave = () => {
-  setfootball1(football);
-};
-const[handball1,sethandball1]=useState(handball);
-const handballMouseEnter = () => {
-  sethandball1(handballhover);
-};
-const handballMouseLeave = () => {
-  sethandball1(handball);
-};
-const[hockey1,sethockey1]=useState(hockey);
-const hockeyMouseEnter = () => {
-  sethockey1(hockeyhover);
-};
-const hockeyMouseLeave = () => {
-  sethockey1(hockey);
-};
-const[kabaddi1,setkabaddi1]=useState(kabaddi);
-const kabaddiMouseEnter = () => {
-  setkabaddi1(kabaddihover);
-};
-const kabaddiMouseLeave = () => {
-  setkabaddi1(kabaddi);
-};
-const[khokho1,setkhokho1]=useState(khokho);
-const khokhoMouseEnter = () => {
-  setkhokho1(khokhohover);
-};
-const khokhoMouseLeave = () => {
-  setkhokho1(khokho);
-};
-const[cycling1,setcycling1]=useState(cycling);
-const cyclingMouseEnter = () => {
-  setcycling1(cyclinghover);
-};
-const cyclingMouseLeave = () => {
-  setcycling1(cycling);
-};
-const[squash1,setsquash1]=useState(squash);
-const squashMouseEnter = () => {
-  setsquash1(squashhover);
-};
-const squashMouseLeave = () => {
-  setsquash1(squash);
-};
-const[tabletennis1,settabletennis1]=useState(tabletennis);
-const tabletennisMouseEnter = () => {
-  settabletennis1(tabletennishover);
-};
-const tabletennisMouseLeave = () => {
-  settabletennis1(tabletennis);
-};
-const[powerlifting1,setpowerlifting1]=useState(powerlifting);
-const powerliftingMouseEnter = () => {
-  setpowerlifting1(powerliftinghover);
-};
-const powerliftingMouseLeave = () => {
-  setpowerlifting1(powerlifting);
-};
-const[weightlifting1,setweightlifting1]=useState(weightlifting);
-const weightliftingMouseEnter = () => {
-  setweightlifting1(weightliftinghover);
-};
-const weightliftingMouseLeave = () => {
-  setweightlifting1(weightlifting);
-};
-const[taekwondo1,settaekwondo1]=useState(taekwondo);
-const taekwondoMouseEnter = () => {
-  settaekwondo1(taekwondohover);
-};
-const taekwondoMouseLeave = () => {
-  settaekwondo1(taekwondo);
-};
-const[tennis1,settennis1]=useState(tennis);
-const tennisMouseEnter = () => {
-  settennis1(tennishover);
-};
-const tennisMouseLeave = () => {
-  settennis1(tennis);
-};
-const[volleyball1,setvolleyball1]=useState(volleyball);
-const volleyballMouseEnter = () => {
-  setvolleyball1(volleyballhover);
-};
-const volleyballMouseLeave = () => {
-  setvolleyball1(volleyball);
-};
-const[chess1,setchess1]=useState(volleyball);
-const chessMouseEnter = () => {
-  setchess1(chesshover);
-};
-const chessMouseLeave = () => {
-  setchess1(chess);
-};
+  const [athletics1, setathletics1] = useState(athletics);
+  const athleticsMouseEnter = () => {
+    setathletics1(athleticshover);
+  };
+  const athleticsMouseLeave = () => {
+    setathletics1(athletics);
+  };
+  const [basketball1, setbasketball1] = useState(basketball);
+  const basketballMouseEnter = () => {
+    setbasketball1(basketballhover);
+  };
+  const basketballMouseLeave = () => {
+    setbasketball1(basketball);
+  };
+  const [badminton1, setbadminton1] = useState(badminton);
+  const badmintonMouseEnter = () => {
+    setbadminton1(badmintonhover);
+  };
+  const badmintonMouseLeave = () => {
+    setbadminton1(badminton);
+  };
+  const [boxing1, setboxing1] = useState(boxing);
+  const boxingMouseEnter = () => {
+    setboxing1(boxinghover);
+  };
+  const boxingMouseLeave = () => {
+    setboxing1(boxing);
+  };
+  const [cricket1, setcricket1] = useState(cricket);
+  const cricketMouseEnter = () => {
+    setcricket1(crickethover);
+  };
+  const cricketMouseLeave = () => {
+    setcricket1(cricket);
+  };
+  const [football1, setfootball1] = useState(football);
+  const footballMouseEnter = () => {
+    setfootball1(footballhover);
+  };
+  const footballMouseLeave = () => {
+    setfootball1(football);
+  };
+  const [handball1, sethandball1] = useState(handball);
+  const handballMouseEnter = () => {
+    sethandball1(handballhover);
+  };
+  const handballMouseLeave = () => {
+    sethandball1(handball);
+  };
+  const [hockey1, sethockey1] = useState(hockey);
+  const hockeyMouseEnter = () => {
+    sethockey1(hockeyhover);
+  };
+  const hockeyMouseLeave = () => {
+    sethockey1(hockey);
+  };
+  const [kabaddi1, setkabaddi1] = useState(kabaddi);
+  const kabaddiMouseEnter = () => {
+    setkabaddi1(kabaddihover);
+  };
+  const kabaddiMouseLeave = () => {
+    setkabaddi1(kabaddi);
+  };
+  const [khokho1, setkhokho1] = useState(khokho);
+  const khokhoMouseEnter = () => {
+    setkhokho1(khokhohover);
+  };
+  const khokhoMouseLeave = () => {
+    setkhokho1(khokho);
+  };
+  const [cycling1, setcycling1] = useState(cycling);
+  const cyclingMouseEnter = () => {
+    setcycling1(cyclinghover);
+  };
+  const cyclingMouseLeave = () => {
+    setcycling1(cycling);
+  };
+  const [squash1, setsquash1] = useState(squash);
+  const squashMouseEnter = () => {
+    setsquash1(squashhover);
+  };
+  const squashMouseLeave = () => {
+    setsquash1(squash);
+  };
+  const [tabletennis1, settabletennis1] = useState(tabletennis);
+  const tabletennisMouseEnter = () => {
+    settabletennis1(tabletennishover);
+  };
+  const tabletennisMouseLeave = () => {
+    settabletennis1(tabletennis);
+  };
+  const [powerlifting1, setpowerlifting1] = useState(powerlifting);
+  const powerliftingMouseEnter = () => {
+    setpowerlifting1(powerliftinghover);
+  };
+  const powerliftingMouseLeave = () => {
+    setpowerlifting1(powerlifting);
+  };
+  const [weightlifting1, setweightlifting1] = useState(weightlifting);
+  const weightliftingMouseEnter = () => {
+    setweightlifting1(weightliftinghover);
+  };
+  const weightliftingMouseLeave = () => {
+    setweightlifting1(weightlifting);
+  };
+  const [taekwondo1, settaekwondo1] = useState(taekwondo);
+  const taekwondoMouseEnter = () => {
+    settaekwondo1(taekwondohover);
+  };
+  const taekwondoMouseLeave = () => {
+    settaekwondo1(taekwondo);
+  };
+  const [tennis1, settennis1] = useState(tennis);
+  const tennisMouseEnter = () => {
+    settennis1(tennishover);
+  };
+  const tennisMouseLeave = () => {
+    settennis1(tennis);
+  };
+  const [volleyball1, setvolleyball1] = useState(volleyball);
+  const volleyballMouseEnter = () => {
+    setvolleyball1(volleyballhover);
+  };
+  const volleyballMouseLeave = () => {
+    setvolleyball1(volleyball);
+  };
+  const [chess1, setchess1] = useState(volleyball);
+  const chessMouseEnter = () => {
+    setchess1(chesshover);
+  };
+  const chessMouseLeave = () => {
+    setchess1(chess);
+  };
 
 
   const onClick0 = () => {
@@ -640,22 +640,22 @@ const chessMouseLeave = () => {
             >
               Find Your Interest
             </h3> */}
-           
+
           </div>
         </div>
-      <div className={styles.maindiv}>
-        <div className={styles.title}>
-      
-          <div><h2 className={`${styles.mb_1} ${styles.H2}`} >
-            Sports &amp; Games
+        <div className={styles.maindiv}>
+          <div className={styles.title}>
+
+            <div><h2 className={`${styles.mb_1} ${styles.H2}`} >
+              Sports &amp; Games
             </h2></div>
-          <div>
-            <Link to="/register/signup/" className={styles.registerbtn}>Register Now</Link>
+            <div>
+              <Link to="/register/signup/" className={styles.registerbtn}>Register Now</Link>
+            </div>
           </div>
-        </div>
-            <div className={styles.scrollablediv}>
-        <div className={`${styles.row}`}>
-          {/* <div
+          <div className={styles.scrollablediv}>
+            <div className={`${styles.row}`}>
+              {/* <div
             className={`${styles.col_2} ${styles.padding} ${styles.shake}`}
             id="0"
           >
@@ -667,65 +667,77 @@ const chessMouseLeave = () => {
             />
           </div> */}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="0"      onMouseEnter={athleticsMouseEnter}
-            onMouseLeave={athleticsMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={athletics1}
-              alt=""
-              onClick={onClick0}
-            />
-            <p>Athletics</p>
-          </div>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="0" onMouseEnter={athleticsMouseEnter}
+                onMouseLeave={athleticsMouseLeave}
+                onClick={onClick0}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={athletics1}
+                  alt=""
+                 
+                />
+                <p>Athletics</p>
+              </div>
+              {showResults0 ? (
+                <Athletics changeState={(showResult0) => setShowResults0(false)} />
+              ) : null}
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="1"
+                onMouseEnter={badmintonMouseEnter}
+                onMouseLeave={badmintonMouseLeave}
+                onClick={onClick1}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={badminton1}
+                  alt=""
+                 
+                />
+                <p>Badminton</p>
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="1"
-            onMouseEnter={badmintonMouseEnter}
-            onMouseLeave={badmintonMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={badminton1}
-              alt=""
-              onClick={onClick1}
-            />
-             <p>Badminton</p>
 
-                
-          </div>
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="2"
-            onMouseEnter={basketballMouseEnter}
-            onMouseLeave={basketballMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={basketball1}
-              alt=""
-              onClick={onClick2}
-            />
-          <p>Basketball</p>
-          </div>
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="3"
-            onMouseEnter={boxingMouseEnter}
-            onMouseLeave={boxingMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={boxing1}
-              alt=""
-              onClick={onClick3}
-            />
-                 <p>Boxing</p>
-          </div>
-          {/*<div
+              </div>
+              {showResults1 ? (
+                <Badminton changeState={(showResult1) => setShowResults1(false)} />
+              ) : null}
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="2"
+                onMouseEnter={basketballMouseEnter}
+                onMouseLeave={basketballMouseLeave}
+                onClick={onClick2}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={basketball1}
+                  alt=""
+                 
+                />
+                <p>Basketball</p>
+              </div>
+              {showResults2 ? (
+                <Basketball changeState={(showResult2) => setShowResults2(false)} />
+              ) : null}
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="3"
+                onMouseEnter={boxingMouseEnter}
+                onMouseLeave={boxingMouseLeave}
+                onClick={onClick3}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={boxing1}
+                  alt=""
+                 
+                />
+                <p>Boxing</p>
+              </div>
+              {/*<div
             className={`${styles.col_2} ${styles.padding} ${styles.shake}`}
             id="0"
           >
@@ -737,25 +749,19 @@ const chessMouseLeave = () => {
             />
           </div>*/}
 
-          {/* {showResults0 ? (
+              {/* {showResults0 ? (
             <Aqautics changeState={(showResult0) => setShowResults0(false)} />
           ) : null} */}
-          {showResults0 ? (
-            <Athletics changeState={(showResult0) => setShowResults0(false)} />
-          ) : null}
-          {showResults1 ? (
-            <Badminton changeState={(showResult1) => setShowResults1(false)} />
-          ) : null}
-          {showResults2 ? (
-            <Basketball changeState={(showResult2) => setShowResults2(false)} />
-          ) : null}
-          {showResults3 ? (
-            <Boxing changeState={(showResult3) => setShowResults3(false)} />
-          ) : null}
-        </div>
+              
+              
+             
+              {showResults3 ? (
+                <Boxing changeState={(showResult3) => setShowResults3(false)} />
+              ) : null}
+            </div>
 
-        <div className={`${styles.row}`}>
-          {/* <div
+            <div className={`${styles.row}`}>
+              {/* <div
             className={`${styles.col_2} ${styles.padding} ${styles.shake}`}
             id="0"
           >
@@ -767,67 +773,80 @@ const chessMouseLeave = () => {
             />
           </div> */}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="0"
-            onMouseEnter={chessMouseEnter}
-            onMouseLeave={chessMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={chess1}
-              alt=""
-              onClick={onClick4}
-            />
-             <p>Chess</p>
-          </div>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="0"
+                onMouseEnter={chessMouseEnter}
+                onMouseLeave={chessMouseLeave}
+                onClick={onClick4}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={chess1}
+                  alt=""
+                
+                />
+                <p>Chess</p>
+              </div>
+              {showResults4 ? (
+                <Chess changeState={(showResult4) => setShowResults4(false)} />
+              ) : null}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="1"
-            onMouseEnter={cricketMouseEnter}
-            onMouseLeave={cricketMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={cricket1}
-              alt=""
-              onClick={onClick5}
-            />
-             <p>Cricket</p>
-          </div>
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="2"
-            onMouseEnter={cyclingMouseEnter}
-            onMouseLeave={cyclingMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={cycling1}
-              alt=""
-              onClick={onClick6}
-            />
-             <p>Cycling</p>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="1"
+                onMouseEnter={cricketMouseEnter}
+                onMouseLeave={cricketMouseLeave}
+                onClick={onClick5}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={cricket1}
+                  alt=""
+                  
+                />
+                <p>Cricket</p>
+              </div>
+              {showResults5 ? (
+                <Cricket changeState={(showResult5) => setShowResults5(false)} />
+              ) : null}
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="2"
+                onMouseEnter={cyclingMouseEnter}
+                onMouseLeave={cyclingMouseLeave}
+                onClick={onClick6}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={cycling1}
+                  alt=""
+                 
+                />
+                <p>Cycling</p>
 
-          </div>
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="3"
-            onMouseEnter={footballMouseEnter}
-            onMouseLeave={footballMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={football1}
-              alt=""
-              onClick={onClick7}
-            />
-             <p>Football</p>
+              </div>
+              {showResults6 ? (
+                <Cycling changeState={(showResult6) => setShowResults6(false)} />
+              ) : null}
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="3"
+                onMouseEnter={footballMouseEnter}
+                onMouseLeave={footballMouseLeave}
+                onClick={onClick7}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={football1}
+                  alt=""
+                
+                />
+                <p>Football</p>
 
-          </div>
+              </div>
 
-          {/*<div
+              {/*<div
             className={`${styles.col_2} ${styles.padding} ${styles.shake}`}
             id="0"
           >
@@ -838,90 +857,97 @@ const chessMouseLeave = () => {
               onClick={onClick8}
             />
           </div>*/}
-          {/* {showResults4 ? (
+              {/* {showResults4 ? (
             <Boxing changeState={(showResult4) => setShowResults4(false)} />
           ) : null} */}
-          {/* {showResults4 ? (
+              {/* {showResults4 ? (
             <Squash changeState={(showResult5) => setShowResults5(false)} />
           ) : null} */}
-          {showResults4 ? (
-            <Chess changeState={(showResult4) => setShowResults4(false)} />
-          ) : null}
-          {showResults5 ? (
-            <Cricket changeState={(showResult5) => setShowResults5(false)} />
-          ) : null}
-          {showResults6 ? (
-            <Cycling changeState={(showResult6) => setShowResults6(false)} />
-          ) : null}
-          {showResults7 ? (
-            <Football changeState={(showResult7) => setShowResults7(false)} />
-          ) : null}
-        </div>
+              
+              
+              
+              {showResults7 ? (
+                <Football changeState={(showResult7) => setShowResults7(false)} />
+              ) : null}
+            </div>
 
-        <div className={`${styles.row}`}>
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="0"
-            onMouseEnter={handballMouseEnter}
-            onMouseLeave={handballMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={handball1}
-              alt=""
-              onClick={onClick8}
-            />
-             <p>Handball</p>
+            <div className={`${styles.row}`}>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="0"
+                onMouseEnter={handballMouseEnter}
+                onMouseLeave={handballMouseLeave}
+                onClick={onClick8}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={handball1}
+                  alt=""
+                  
+                />
+                <p>Handball</p>
 
-          </div>
+              </div>
+              {showResults8 ? (
+                <Handball changeState={(showResult8) => setShowResults8(false)} />
+              ) : null}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="1"
-            onMouseEnter={hockeyMouseEnter}
-            onMouseLeave={hockeyMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={hockey1}
-              alt=""
-              onClick={onClick9}
-            />
-             <p>Hockey</p>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="1"
+                onMouseEnter={hockeyMouseEnter}
+                onMouseLeave={hockeyMouseLeave}
+                onClick={onClick9}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={hockey1}
+                  alt=""
+                 
+                />
+                <p>Hockey</p>
 
-          </div>
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="2"
-            onMouseEnter={kabaddiMouseEnter}
-            onMouseLeave={kabaddiMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={kabaddi1}
-              alt=""
-              onClick={onClick10}
-            />
-             <p>Kabaddi</p>
+              </div>
+              {showResults9 ? (
+                <Hockey changeState={(showResult9) => setShowResults9(false)} />
+              ) : null}
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="2"
+                onMouseEnter={kabaddiMouseEnter}
+                onMouseLeave={kabaddiMouseLeave}
+                onClick={onClick10}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={kabaddi1}
+                  alt=""
+                 
+                />
+                <p>Kabaddi</p>
 
-          </div>
+              </div>
+              {showResults10 ? (
+                <Kabbadi changeState={(showResult10) => setShowResults10(false)} />
+              ) : null}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="3"
-            onMouseEnter={khokhoMouseEnter}
-            onMouseLeave={khokhoMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={khokho1}
-              alt=""
-              onClick={onClick11}
-            />
-             <p>kho-kho</p>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="3"
+                onMouseEnter={khokhoMouseEnter}
+                onMouseLeave={khokhoMouseLeave}
+                onClick={onClick11}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={khokho1}
+                  alt=""
+                 
+                />
+                <p>kho-kho</p>
 
-          </div>
-          {/*<div
+              </div>
+              {/*<div
             className={`${styles.col_2} ${styles.padding} ${styles.shake}`}
             id="1"
           >
@@ -932,7 +958,7 @@ const chessMouseLeave = () => {
               onClick={onClick13}
             />
           </div>*/}
-          {/*<div
+              {/*<div
             className={`${styles.col_2} ${styles.padding} ${styles.shake}`}
             id="3"
           >
@@ -943,196 +969,197 @@ const chessMouseLeave = () => {
               onClick={onClick15}
             />
           </div>*/}
-          {/* {showResults8 ? (
+              {/* {showResults8 ? (
             <Cycling changeState={(showResult8) => setShowResults8(false)} />
           ) : null} */}
 
-          {showResults8 ? (
-            <Handball changeState={(showResult8) => setShowResults8(false)} />
-          ) : null}
-          {showResults9 ? (
-            <Hockey changeState={(showResult9) => setShowResults9(false)} />
-          ) : null}
-          {showResults10 ? (
-            <Kabbadi changeState={(showResult10) => setShowResults10(false)} />
-          ) : null}
-          {showResults11 ? (
-            <Khokho changeState={(showResult11) => setShowResults11(false)} />
-          ) : null}
-        </div>
+              
+              
+              
+              {showResults11 ? (
+                <Khokho changeState={(showResult11) => setShowResults11(false)} />
+              ) : null}
+            </div>
 
-        <div className={`${styles.row}`}>
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="0"
-            onMouseEnter={powerliftingMouseEnter}
-            onMouseLeave={powerliftingMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={powerlifting1}
-              alt=""
-              onClick={onClick12}
-            />
-             <p>Powerlifting</p>
+            <div className={`${styles.row}`}>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="0"
+                onMouseEnter={powerliftingMouseEnter}
+                onMouseLeave={powerliftingMouseLeave}
+                onClick={onClick12}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={powerlifting1}
+                  alt=""
+               
+                />
+                <p>Powerlifting</p>
 
-          </div>
+              </div>
+              {showResults12 ? (
+                <Powerlifting
+                  changeState={(showResult12) => setShowResults12(false)}
+                />
+              ) : null}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="1"
-            onMouseEnter={squashMouseEnter}
-            onMouseLeave={squashMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={squash1}
-              alt=""
-              onClick={onClick13}
-            />
-             <p>Squash</p>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="1"
+                onMouseEnter={squashMouseEnter}
+                onMouseLeave={squashMouseLeave}
+                onClick={onClick13}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={squash1}
+                  alt=""
+                 
+                />
+                <p>Squash</p>
 
-          </div>
+              </div>
+              {showResults13 ? (
+                <Squash changeState={(showResult13) => setShowResults13(false)} />
+              ) : null}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="2"
-            onMouseEnter={tabletennisMouseEnter}
-            onMouseLeave={tabletennisMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={tabletennis1}
-              alt=""
-              onClick={onClick14}
-            />
-             <p>TableTennis</p>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="2"
+                onMouseEnter={tabletennisMouseEnter}
+                onMouseLeave={tabletennisMouseLeave}
+                onClick={onClick14}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={tabletennis1}
+                  alt=""
+                />
+                <p>TableTennis</p>
 
-          </div>
+              </div>
+              {showResults14 ? (
+                <TableTennis
+                  changeState={(showResult14) => setShowResults14(false)}
+                />
+              ) : null}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="3"
-            onMouseEnter={taekwondoMouseEnter}
-            onMouseLeave={taekwondoMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={taekwondo1}
-              alt=""
-              onClick={onClick15}
-            />
-             <p>Taekwondo</p>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="3"
+                onMouseEnter={taekwondoMouseEnter}
+                onMouseLeave={taekwondoMouseLeave}
+                onClick={onClick15}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={taekwondo1}
+                  alt=""
+                />
+                <p>Taekwondo</p>
 
-          </div>
-          {/* {showResults12 ? (
+              </div>
+              {/* {showResults12 ? (
             <Kabbadi changeState={(showResult12) => setShowResults12(false)} />
           ) : null}
           {showResults13 ? (
             <Khokho changeState={(showResult13) => setShowResults13(false)} />
           ) : null} */}
-          {showResults12 ? (
-            <Powerlifting
-              changeState={(showResult12) => setShowResults12(false)}
-            />
-          ) : null}
-          {showResults13 ? (
-            <Squash changeState={(showResult13) => setShowResults13(false)} />
-          ) : null}
-          {showResults14 ? (
-            <TableTennis
-              changeState={(showResult14) => setShowResults14(false)}
-            />
-          ) : null}
-          {showResults15 ? (
-            <Taekwondo
-              changeState={(showResult15) => setShowResults15(false)}
-            />
-          ) : null}
-        </div>
+              
+              
+              
+              {showResults15 ? (
+                <Taekwondo
+                  changeState={(showResult15) => setShowResults15(false)}
+                />
+              ) : null}
+            </div>
 
-        <div className={`${styles.row} ${styles.lastrow} `}>
-          {/*<div
+            <div className={`${styles.row} ${styles.lastrow} `}>
+              {/*<div
             className={`${styles.col_2} ${styles.padding1} ${styles.shake}`}
             id="0"
          ></div> */}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="0"
-            onMouseEnter={tennisMouseEnter}
-            onMouseLeave={tennisMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={tennis1}
-              alt=""
-              onClick={onClick16}
-            />
-             <p>Tennis</p>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="0"
+                onMouseEnter={tennisMouseEnter}
+                onMouseLeave={tennisMouseLeave}
+                onClick={onClick16}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={tennis1}
+                  alt=""
+                />
+                <p>Tennis</p>
 
-          </div>
+              </div>
+              {showResults16 ? (
+                <Tennis changeState={(showResult16) => setShowResults16(false)} />
+              ) : null}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="1"
-            onMouseEnter={volleyballMouseEnter}
-            onMouseLeave={volleyballMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={volleyball1}
-              alt=""
-              onClick={onClick17}
-            />
-             <p>Volleyball</p>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="1"
+                onMouseEnter={volleyballMouseEnter}
+                onMouseLeave={volleyballMouseLeave}
+                onClick={onClick17}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={volleyball1}
+                  alt=""
+                />
+                <p>Volleyball</p>
 
-          </div>
+              </div>
+              {showResults17 ? (
+                <Volleyball
+                  changeState={(showResult17) => setShowResults17(false)}
+                />
+              ) : null}
 
-          <div
-            className={`${styles.col_2} ${styles.padding} `}
-            id="2"
-            onMouseEnter={weightliftingMouseEnter}
-            onMouseLeave={weightliftingMouseLeave}
-          >
-            <img
-              className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
-              src={weightlifting1}
-              alt=""
-              onClick={onClick18}
-            />
-             <p>Weightlifting</p>
+              <div
+                className={`${styles.col_2} ${styles.padding} `}
+                id="2"
+                onMouseEnter={weightliftingMouseEnter}
+                onMouseLeave={weightliftingMouseLeave}
+                onClick={onClick18}
+              >
+                <img
+                  className={`${styles.img_responsive} ${styles.hvr_buzz_out} ${styles.grayscale}`}
+                  src={weightlifting1}
+                  alt=""
+                />
+                <p>Weightlifting</p>
 
-          </div>
-          <div
-            className={`${styles.col_2} ${styles.padding} ${styles.emptyblock} `} style={{backgroundColor:'transparent'}}></div>
+              </div>
+              <div
+                className={`${styles.col_2} ${styles.padding} ${styles.emptyblock} `} style={{ backgroundColor: 'transparent' }}></div>
 
-          {/* <div
+              {/* <div
             className={`${styles.col_2} ${styles.padding1} ${styles.shake}`}
             id="3"
           ></div> */}
 
-          {/* {showResults16 ? (
+              {/* {showResults16 ? (
             <Tennis changeState={(showResult0) => setShowResults16(false)} />
           ) : null} */}
-          {showResults16 ? (
-            <Tennis changeState={(showResult16) => setShowResults16(false)} />
-          ) : null}
-          {showResults17 ? (
-            <Volleyball
-              changeState={(showResult17) => setShowResults17(false)}
-            />
-          ) : null}
-          {showResults18 ? (
-            <WeightLifting
-              changeState={(showResult18) => setShowResults18(false)}
-            />
-          ) : null}
+              
+              
+              {showResults18 ? (
+                <WeightLifting
+                  changeState={(showResult18) => setShowResults18(false)}
+                />
+              ) : null}
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-      </div>
-   
+
     </section>
   );
 };

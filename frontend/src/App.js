@@ -81,6 +81,9 @@ const Footer1 = React.lazy(() =>
 const Matches =React.lazy(()=>
   import('./components/LandingPages/matches/matches')
 );
+const Espardha =React.lazy(()=>
+  import('./components/LandingPages/Espardha/Espardha')
+);
 
 function usePageViews() {
   let location = useLocation();
@@ -183,6 +186,14 @@ function App() {
             element={
               <Suspense fallback={<Preloader />}>
                 <About />
+              </Suspense>
+            }
+          />
+          <Route
+            path="espardha"
+            element={
+              <Suspense fallback={<Preloader />}>
+                <Espardha/>
               </Suspense>
             }
           />

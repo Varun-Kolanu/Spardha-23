@@ -1,66 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+.container {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 100px 200px 32px 200px;
+  border-radius: 8px;
+  position: fixed;
+  padding: 20px 5px 20px 20px;
+  justify-content: center;
+  width: -webkit-fill-available;
+}
+h3 {
+  color: #760e53;
+  font-size: 2.1875rem;
 
-.heading {
-  font-size: 25px !important;
-  display: block;
-  margin-bottom: 3px !important;
-  margin-left: 15px;
-  line-height: 1;
-  z-index: 1;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  font-family: 'League Spartan', sans-serif;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  color: #6db549;
-  text-align: center !important;
-  font-weight: bolder;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-bottom: 20px;
+  overflow-x: auto;
+  width: 100%;
+  white-space: nowrap;
 }
 
-.ftco-section {
-  /* background: url(../../../assets/bg/bg_football.jpg) fixed center center/cover; */
-  padding: 4em 0;
-  position: relative;
+.buttons::-webkit-scrollbar {
+  height: 0px;
 }
-
-.subheading {
-  font-size: 60px !important;
+.click {
+  border-radius: 20px;
+  padding: 4px 18px;
+  border: 2.5px solid #760e53;
+  transition: all 0.3s;
+  color: #760e53;
+  /* font-weight: bold; */
+  font-size: 1.125rem;
+}
+.click:hover {
+  background-color: #760e53;
   color: white;
-  position: relative;
-  text-transform: uppercase;
-  line-height: 1.2;
-  word-spacing: 5px;
-  font-weight: 900;
-  text-align: center !important;
 }
-
-.team-heading {
-  font-family: 'League Spartan';
-  font-weight: bolder;
-  /* color: #6db549; */
-  color: white;
-  font-size: 30px;
-  padding-top: 55px;
+.cards {
+  display: grid;
+  /* flex-direction: row; */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  flex-wrap: wrap;
+  height: 65vh;
+  overflow-y: auto;
 }
-
-@media only screen and (max-width: 767.98px) {
-  .heading {
-    font-size: 20px !important;
-  }
-
-  .subheading {
-    font-size: 40px !important;
-  }
+.cards::-webkit-scrollbar {
+  width: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.cards::-webkit-scrollbar-thumb {
+  background-color: #760e53;
+  border-radius: 200px;
+}
+.card {
+  width: 18rem;
 }
 body {
   max-width: calc(100vw - 17px);
 }
 
 @media (pointer: coarse) {
-
   body {
-width: 100vw;
+    width: 100vw;
+  }
+}
+@media (max-width: 1400px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 1211px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 948px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 730px) {
+  .container {
+    margin: 100px 100px 32px 100px;
+  }
+  h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 540px) {
+  .container {
+    margin: 100px 50px 32px 50px;
+  }
+}
+@media (max-width: 450px) {
+  .container {
+    margin: 100px 30px 32px 30px;
+  }
+}
+@media (max-width: 395px) {
+  .container {
+    margin: 100px 11px 32px 11px;
   }
 }

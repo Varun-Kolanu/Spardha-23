@@ -233,6 +233,39 @@ function Header() {
                     Events
                   </NavHashLink>
                 </NavItem>
+                <NavItem className={styles['nav-items']}>
+                  <NavHashLink
+                    exact="true"
+                    to="/espardha#espardha"
+                    className={styles['nav-links']}
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                    // style={({ isActive }) => {
+                    //   return {
+                    //     color
+                    //     // : isActive
+                    //     //   ? '#6db549'
+                    //       : navbar
+                    //       ? '#000'
+                    //       : 'rgba(255, 255, 255, 0.9)',
+                    //   };
+                    // }}
+                    style={({ isActive }) => {if(isActive){setActive(true)}
+                      return {
+                        color: isMobile
+                          ? '#000'
+                          : navbar
+                          ? '#000'
+                          : 'rgba(255, 255, 255, 0.9)',
+                          borderBottom:isMobile?'1px solid black': isActive ? '3px solid red' : null,
+                        };
+                    }}
+                    smooth
+                  >
+                    ESPARDHA
+                  </NavHashLink>
+                </NavItem>
                 {/* <NavItem className={styles['nav-items']}>
                   <a
                     href="/pdf/RuleBook.pdf"

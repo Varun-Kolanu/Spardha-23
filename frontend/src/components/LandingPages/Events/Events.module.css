@@ -1,5 +1,5 @@
 .ftco_section {
-  padding: 2em 0;
+  padding: 1.5em 0;
   position: relative;
 }
 .maindiv{
@@ -13,7 +13,7 @@
 
 }
 .scrollablediv{
-  height: 70vh;
+  height: 65vh;
   z-index: 1;
   position: relative;
   overflow: auto;
@@ -46,11 +46,19 @@
   color: #760E53;
 }
 
+@media(max-width:780px){
+  .registerbtn{
+    height: fit-content;
+    padding: 1vh 4vh;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+  }
+}
 .registerbtn:hover{
   background-color: #760E53;
   color: white;
   transition: ease-out;
-  transition-duration: 200ms;
+  transition-duration: 300ms;
 }
 /* Customize scrollbar appearance (optional) */
 .scrollablediv::-webkit-scrollbar {
@@ -719,9 +727,17 @@ padding: 0px 2vw;
   top: 6%; 
   position: absolute
 }
+.rule_book_box div{
+  color: #760E53;
+}
 .rule_book_box:hover{
   background-color: #760E53;
   color: #ffdcdc;
+  transition: 300ms;
+  .rulebook{
+    color: #fff;
+    transition: 300ms;
+  }
 }
 .event_box_name{
   left:17%;
@@ -760,8 +776,7 @@ padding: 0px 2vw;
   margin-left: auto;
   margin-right: auto;
   height: 150%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+
 }
 
 @media (min-width: 500px){
@@ -1081,4 +1096,38 @@ padding: 0px 2vw;
     display: none;
   }
 }
+@media (max-width:780px){
+.title{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}}
 
+.maindiv{
+  height: 81vh;
+  top: 0vh;
+  margin-top: 10vh;
+}
+.H2{
+  padding-left: 2vw;
+}
+@media(max-width:780px){
+  .H2{
+padding-top: 3vh;
+    height: fit-content;
+  }
+}
+@media(max-width:650px){
+  .maindiv{
+    height: 83vh;
+    position: absolute;
+    bottom: 0%;
+    top: 400px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .H2{
+    font-size: 24px;
+  }
+}
