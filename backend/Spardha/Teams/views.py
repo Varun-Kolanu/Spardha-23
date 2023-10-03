@@ -310,17 +310,18 @@ def form_serialized_data(contingent):
     return data
 
 class ContingentFormView(generics.GenericAPIView):
+    serializer_class = FormSerializer
     @swagger_auto_schema(
-        responses={
-            200: """Download file""",
-        },
         manual_parameters=[token_param]
     )
     def get(self, request):
         contingents = Contingent.objects.prefetch_related('college_rep__team_set__game').filter(college_rep=request.user)
         data = {}
         for contingent in contingents:
-            data = form_serialized_data(contingent)
+            # data = form_serialized_data(contingent)
+            serializer = self.get_serializer(data=form_serialized_data(contingent))
+            serializer.is_valid(raise_exception=True)
+            data = serializer.data
         if not data:
             response = Response({"error": "Please register your contingent"}, status=status.HTTP_404_NOT_FOUND)
         else:

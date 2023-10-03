@@ -67,51 +67,6 @@ const Home = () => {
     });
   }
 
-  const data1 = {
-    "institution_name": "string",
-    "phone_no": "9000000000",
-    "leader_name": "string",
-    "leader_contact_num": "9603138312",
-    "num_of_boys": 0,
-    "num_of_girls": 0,
-    "num_of_coaches_pti": 0,
-    "num_of_faculty_members": 0,
-    "num_of_supporting_staff": 0,
-    "games": [
-      {
-        "game_name": "Cricket",
-        "max_players": 11,
-        "players": [
-          "Ladka1",
-          "Ladka2",
-          "Ladka3",
-          "Ladka4",
-          "Ladka5",
-          "Ladka6",
-          "Ladka7",
-          "Ladka8",
-          "Ladka9",
-          "Ladka10",
-          "Ladka11"
-        ],
-        "game_type": "B",
-        "captain_name": "CaptainLadka",
-        "captain_phone": "9603138315"
-      },
-      {
-        "game_name": "Tennis",
-        "max_players": 2,
-        "players": [
-          "Ladki1",
-          "Ladki2"
-        ],
-        "game_type": "G",
-        "captain_name": "CaptainLadki",
-        "captain_phone": "9603138312"
-      }
-    ]
-  }
-
   const handleDownload = () => {
     axios.get(`${baseUrl}teams/contingent/form`, {
       responseType: 'blob',
