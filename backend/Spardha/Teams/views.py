@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
-from django.http import FileResponse
+from django.http import JsonResponse
+from django.core import serializers
 from .models import Game, Team, Contingent
 from .serializers import (
     GameSerializer,
@@ -8,12 +9,12 @@ from .serializers import (
     TeamUpdateSerializer,
     AllContingentSerializer,
     ContingentSerializer,
+    FormSerializer
 )
 from drf_yasg.utils import swagger_auto_schema
 from scripts.user_registration import UsersSheet
 from drf_yasg import openapi
 # from scripts.team_registration import TeamsSheet
-from Teams.create_form import create_form
 
 token_param = openapi.Parameter('Authorization', openapi.IN_HEADER, description="Token <YourToken>", type=openapi.TYPE_STRING)
 
@@ -305,11 +306,10 @@ def form_serialized_data(contingent):
                 "captain_phone": team.captain_phone
             } for team in college_rep.team_set.all()
         ]
-        #* college_rep.team_set fetches all the teams it is referred by foreign key
     }
     return data
-class ContingentFormView(generics.GenericAPIView):
 
+class ContingentFormView(generics.GenericAPIView):
     @swagger_auto_schema(
         responses={
             200: """Download file""",
@@ -324,6 +324,5 @@ class ContingentFormView(generics.GenericAPIView):
         if not data:
             response = Response({"error": "Please register your contingent"}, status=status.HTTP_404_NOT_FOUND)
         else:
-            response = FileResponse(create_form(data), content_type='application/msword')
-            response['Content-Disposition'] = 'attachment; filename="Spardha23_detailed_entry_form.docx"'
+            response = JsonResponse(data)
         return response
