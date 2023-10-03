@@ -302,7 +302,7 @@ const Athletics = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -648,7 +648,7 @@ const Badminton = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -945,7 +945,7 @@ const Basketball = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -1218,7 +1218,7 @@ const Boxing = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -1492,7 +1492,7 @@ const Chess = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -1770,7 +1770,7 @@ const Cricket = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -2047,7 +2047,7 @@ const Cycling = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -2232,7 +2232,7 @@ const Football = (props) => {
 
                 </span>
                 <span className={`${styles.content}`}>
-                  9549847995
+                  9580058180
                   <br />
                   soham.nandy.cd.mst21@itbhu.ac.in
                   <br />
@@ -2277,13 +2277,13 @@ const Football = (props) => {
               >
                 <span className={`${styles.content_header}`}
                 >
-                  Sachin Kumar
+                  Harsh Raj Singh
                   <br />
                 </span>
                 <span className={`${styles.content}`}>
-                  6205237836
+                  9142697620
                   <br />
-                  sachin.kumar.met19@itbhu.ac.in<br /><br />
+                  harsh.raj.chy21@itbhu.ac.in<br /><br />
                 </span>
 
 
@@ -2321,7 +2321,7 @@ const Football = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -2599,7 +2599,7 @@ const Handball = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -2877,7 +2877,7 @@ const Hockey = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -3131,7 +3131,7 @@ const Kabbadi = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -3427,7 +3427,7 @@ const Khokho = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -3728,7 +3728,7 @@ const Powerlifting = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -3984,7 +3984,7 @@ const Squash = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -4223,7 +4223,7 @@ const TableTennis = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -4461,7 +4461,7 @@ const Taekwondo = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -4700,7 +4700,7 @@ const Tennis = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -4994,7 +4994,7 @@ const Volleyball = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >
@@ -5292,7 +5292,7 @@ const WeightLifting = (props) => {
                 fontSize: 18,
                 fontFamily: "Poppins",
                 fontWeight: 600,
-                textAlign:"center",
+                textAlign: "center",
                 wordWrap: "break-word"
               }}
             >

@@ -1142,3 +1142,9 @@ padding-top: 3vh;
     font-size: 18px;
   }
 }
+@media (max-width:768px){
+  .ftco_section{
+    margin-top: -60px;
+  }
+}
+
