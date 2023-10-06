@@ -5,11 +5,12 @@ class AllDocumentSerializer(serializers.ModelSerializer):
     document = serializers.JSONField()
     class Meta:
         model = Document
-        fields = ["id", "document", "is_verified", "verification_time", "is_rejected", "comments"]
+        fields = "__all__"
+        read_only_fields = ["id", "username", "is_verified","verified_by", "verification_time", "is_rejected", "comments"]
 
     def create(self, validated_data):
         document_to_add = Document.objects.create(
-            user_id_id=self.context['request'].user.id,
+            username=self.context['request'].user.username,
             document=validated_data['document']
         )
         return document_to_add

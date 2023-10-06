@@ -16,9 +16,12 @@ class AllDocumentView(generics.GenericAPIView):
     )
     def get(self, request):
         try:
-            documents = Document.objects.filter(user_id_id=request.user.id)
-            serializer = AllDocumentSerializer(documents, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            if request.user:
+                documents = Document.objects.filter(username=request.user.username)
+                serializer = AllDocumentSerializer(documents, many=True)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response({"error": "Please login to continue"}, status=status.HTTP_403_FORBIDDEN)
         except Exception as e:
             return Response({"error": str(e)}, status = status.HTTP_400_BAD_REQUEST)
 
@@ -34,10 +37,13 @@ class AllDocumentView(generics.GenericAPIView):
     )
     def post(self, request):
         try:
-            serializer = self.get_serializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            return Response({"success": "Document has been created successfully"}, status=status.HTTP_201_CREATED)
+            if request.user.username:
+                serializer = self.get_serializer(data=request.data)
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+                return Response({"success": "Document has been created successfully"}, status=status.HTTP_201_CREATED)
+            else:
+                return Response({"error": "Please login to continue"}, status=status.HTTP_403_FORBIDDEN)
         except Exception as e:
             return Response({"error": str(e)}, status = status.HTTP_400_BAD_REQUEST)
 
@@ -61,13 +67,15 @@ class DocumentView(generics.GenericAPIView):
             document_to_verify = Document.objects.get(id=id)
             data_to_modify = request.data
             if request.user.is_admin or request.user.is_staff:
-                document_to_verify.verified_by = request.user
+                if "document" in data_to_modify:
+                    del data_to_modify["document"]
+                document_to_verify.verified_by = request.user.username
                 document_to_verify.verification_time = timezone.now()
                 serializer = self.get_serializer(document_to_verify, data=data_to_modify,partial=True)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
-            elif request.user.id != document_to_verify.user_id_id:
-                return Response({"error": "You are not allowed to edit other's document"})
+            elif request.user.username != document_to_verify.username:
+                return Response({"error": "You are not allowed to edit other's document"}, status=status.HTTP_403_FORBIDDEN)
             elif "document" in request.data:
                 data_to_modify = {
                     "document": data_to_modify["document"]
@@ -75,6 +83,6 @@ class DocumentView(generics.GenericAPIView):
                 serializer = self.get_serializer(document_to_verify, data=data_to_modify,partial=True)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
-            return Response({"success": "Document's verification status has been updated successfully"}, status=status.HTTP_204_NO_CONTENT)
+            return Response({"success": "Document's verification status has been updated successfully"}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status = status.HTTP_400_BAD_REQUEST)
