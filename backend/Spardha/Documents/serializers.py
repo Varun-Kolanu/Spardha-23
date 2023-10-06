@@ -2,26 +2,20 @@ from rest_framework import serializers
 from .models import Document, UserAccount
 
 class AllDocumentSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField()
-    user_id = serializers.PrimaryKeyRelatedField(queryset=UserAccount.objects.all())
     document = serializers.JSONField()
-    is_verified = serializers.BooleanField(default=False)
-    verification_time = serializers.DateTimeField()
-    is_rejected = serializers.BooleanField(default=False)
-    comments = serializers.CharField()
-    verified_by_name = serializers.SerializerMethodField()
-
     class Meta:
         model = Document
-        fields = "__all__"
+        fields = ["id", "document", "is_verified", "verification_time", "is_rejected", "comments"]
 
-    def get_verified_by_name(self, obj):
-        if obj.verified_by:
-            return obj.verified_by.name
-        return None  # Handle the case where verified_by is None
+    def create(self, validated_data):
+        document_to_add = Document.objects.create(
+            user_id_id=self.context['request'].user.id,
+            document=validated_data['document']
+        )
+        return document_to_add
 
 class DocumentUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Document
-        fields = ("is_verified", "verified_by", "is_rejected", "comments")
+        fields = ("document", "is_verified", "is_rejected", "comments")
