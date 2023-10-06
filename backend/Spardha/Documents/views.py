@@ -15,9 +15,13 @@ class AllDocumentView(generics.GenericAPIView):
         manual_parameters=[token_param]
     )
     def get(self, request):
-        documents = Document.objects.filter(user_id_id=request.user.id)
-        serializer = AllDocumentSerializer(documents, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        try:
+            documents = Document.objects.filter(user_id_id=request.user.id)
+            serializer = AllDocumentSerializer(documents, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status = status.HTTP_400_BAD_REQUEST)
+
     
     @swagger_auto_schema(
         request_body=AllDocumentSerializer(many=False, partial=True),
@@ -29,10 +33,14 @@ class AllDocumentView(generics.GenericAPIView):
         manual_parameters=[token_param]
     )
     def post(self, request):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response({"success": "Document has been created successfully"}, status=status.HTTP_201_CREATED)
+        try:
+            serializer = self.get_serializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response({"success": "Document has been created successfully"}, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({"error": str(e)}, status = status.HTTP_400_BAD_REQUEST)
+
 
 class DocumentView(generics.GenericAPIView):
     serializer_class = DocumentUpdateSerializer
@@ -69,4 +77,4 @@ class DocumentView(generics.GenericAPIView):
                 serializer.save()
             return Response({"success": "Document's verification status has been updated successfully"}, status=status.HTTP_204_NO_CONTENT)
         except Exception as e:
-            return Response({"error": "Error fetching document"}, status = status.HTTP_400_BAD_REQUEST)
+            return Response({"error": str(e)}, status = status.HTTP_400_BAD_REQUEST)
