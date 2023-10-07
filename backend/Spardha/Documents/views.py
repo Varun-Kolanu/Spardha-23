@@ -16,12 +16,16 @@ class AllDocumentView(generics.GenericAPIView):
     )
     def get(self, request):
         try:
-            if request.user:
-                documents = Document.objects.filter(username=request.user.username)
+            if not request.user.is_authenticated:
+                return Response({"error": "Please login to continue"}, status=status.HTTP_403_FORBIDDEN)
+            elif request.user.is_staff or request.user.is_admin:
+                documents = Document.objects.all()
                 serializer = AllDocumentSerializer(documents, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
             else:
-                return Response({"error": "Please login to continue"}, status=status.HTTP_403_FORBIDDEN)
+                documents = Document.objects.filter(username=request.user.username)
+                serializer = AllDocumentSerializer(documents, many=True)
+                return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status = status.HTTP_400_BAD_REQUEST)
 
@@ -37,7 +41,7 @@ class AllDocumentView(generics.GenericAPIView):
     )
     def post(self, request):
         try:
-            if request.user.username:
+            if request.user.is_authenticated:
                 serializer = self.get_serializer(data=request.data)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
@@ -66,6 +70,8 @@ class DocumentView(generics.GenericAPIView):
         try:
             document_to_verify = Document.objects.get(id=id)
             data_to_modify = request.data
+            if not request.user.is_authenticated:
+                return Response({"error": "Please login to continue"}, status=status.HTTP_403_FORBIDDEN)
             if request.user.is_admin or request.user.is_staff:
                 if "document" in data_to_modify:
                     del data_to_modify["document"]
