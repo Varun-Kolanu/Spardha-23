@@ -57,7 +57,7 @@ class DocumentView(generics.GenericAPIView):
 
     @swagger_auto_schema(
         responses={
-            204: """{
+            200: """{
                     "success": "Document's verification status has been updated successfully"
                 }""",
             404: """{
@@ -89,6 +89,31 @@ class DocumentView(generics.GenericAPIView):
                 serializer = self.get_serializer(document_to_verify, data=data_to_modify,partial=True)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
-            return Response({"success": "Document's verification status has been updated successfully"}, status=status.HTTP_200_OK)
+            return Response({"success": "Document has been updated successfully"}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status = status.HTTP_400_BAD_REQUEST)
+    
+
+    @swagger_auto_schema(
+        responses={
+            200: """{
+                    "success": "Document's verification status has been deleted successfully"
+                }""",
+            400: """{
+                "error": "Error fetching document"
+                }"""
+        },
+        manual_parameters=[token_param]
+    )
+    def delete(self, request, id):
+        try:
+            if not request.user.is_authenticated:
+                return Response({"error": "Please login to continue"}, status=status.HTTP_403_FORBIDDEN)
+            elif not request.user.is_admin:
+                return Response({"error": "You're not admin to perform this operation"}, status=status.HTTP_403_FORBIDDEN)
+            else:
+                document_to_delete = Document.objects.get(id=id)
+                document_to_delete.delete()
+                return Response({"success": "Document has been deleted successfully"}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status = status.HTTP_400_BAD_REQUEST)
