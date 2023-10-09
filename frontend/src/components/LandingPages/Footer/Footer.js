@@ -72,7 +72,7 @@ const Footer = () => {
                 <div className={styles.links}>
                   <div className={styles.logo}>
                     <i class="fa-solid fa-envelope fa-2xl"></i>
-                    <a href="mailto:spardha@iitbhu.ac.in" className={styles.link}>spardha@iitbhu.ac.in</a>
+                    <a href="mailto:spardha@itbhu.ac.in" className={styles.link}>spardha@itbhu.ac.in</a>
                   </div>
                   <div className={styles.logo} style={{
                     display: "flex",

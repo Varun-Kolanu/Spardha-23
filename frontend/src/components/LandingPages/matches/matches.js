@@ -28,11 +28,11 @@ const Matches = () => {
     'Volleyball',
     'Weight Lifting',
   ];
-  const [selectedDate, setSelectedDate] = useState('2023-09-23'); // Set the default date here
+  // const [selectedDate, setSelectedDate] = useState('2023-09-23'); // Set the default date here
   const [selectedSport, setSelectedSport] = useState('All');
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
+  // const handleDateChange = (event) => {
+  //   setSelectedDate(event.target.value);
+  // };
   const scrollNavbar = (direction) => {
     const navbar = document.getElementById('navbar');
     const step = 200; // Adjust the scroll step as needed
@@ -71,7 +71,7 @@ const Matches = () => {
                     Fixtures
                   </h3>
                 </span>
-                <h3 style={{ fontWeight: 300 }}>|</h3>
+                {/* <h3 style={{ fontWeight: 300 }}>|</h3>
                 <span onClick={() => setActiveTab('Results')}>
                   <h3
                     style={{
@@ -85,7 +85,7 @@ const Matches = () => {
                   >
                     Results
                   </h3>
-                </span>
+                </span> */}
               </div>
             </div>
             <div className={`${styles.horizontal_navbar_container}`}>
@@ -137,7 +137,7 @@ const Matches = () => {
             </div>
             <div className={`${styles.date}`}>
               {/* <label htmlFor="dateSelect">Select a Date:</label> */}
-              <select
+              {/* <select
                 id="dateSelect"
                 value={selectedDate}
                 onChange={handleDateChange}
@@ -145,7 +145,7 @@ const Matches = () => {
                 <option value="2023-09-21">September 21, 2023</option>
                 <option value="2023-09-22">September 22, 2023</option>
                 <option value="2023-09-23">September 23, 2023 </option>
-              </select>
+              </select> */}
               {/* <p>Selected Date: {selectedDate}</p> */}
             </div>
             <div className={`${styles.scrollablediv}`}>

@@ -216,7 +216,7 @@ const Events = () => {
   const volleyballMouseLeave = () => {
     setvolleyball1(volleyball);
   };
-  const [chess1, setchess1] = useState(volleyball);
+  const [chess1, setchess1] = useState(chess);
   const chessMouseEnter = () => {
     setchess1(chesshover);
   };
