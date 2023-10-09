@@ -75,6 +75,7 @@ class DocumentView(generics.GenericAPIView):
             if request.user.is_admin or request.user.is_staff:
                 if "document" in data_to_modify:
                     del data_to_modify["document"]
+                data_to_modify["made_new_changes"] = False
                 document_to_verify.verified_by = request.user.username
                 document_to_verify.verification_time = timezone.now()
                 serializer = self.get_serializer(document_to_verify, data=data_to_modify,partial=True)
@@ -84,8 +85,16 @@ class DocumentView(generics.GenericAPIView):
                 return Response({"error": "You are not allowed to edit other's document"}, status=status.HTTP_403_FORBIDDEN)
             elif "document" in request.data:
                 data_to_modify = {
-                    "document": data_to_modify["document"]
+                    "document": data_to_modify["document"],
+                    "made_new_changes": True
                 }
+                serializer = self.get_serializer(document_to_verify, data=data_to_modify,partial=True)
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+            elif "made_new_changes" in request.data:
+                data_to_modify = {
+                    "made_new_changes": data_to_modify["made_new_changes"]
+                }                    
                 serializer = self.get_serializer(document_to_verify, data=data_to_modify,partial=True)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
