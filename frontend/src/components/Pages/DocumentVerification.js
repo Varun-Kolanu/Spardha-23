@@ -82,7 +82,7 @@ function DocumentRow({ document, serialNumber, setErrorMessage }) {
 		setModified(false)
 		if (newDoc === document) return;
 		axios
-			.patch(baseUrl + "/documents/verify/" + document.id + "/", newDoc, {
+			.patch(baseUrl + "/documents/" + document.id + "/", newDoc, {
 				headers: {
 					Authorization: `Token ${token}`,
 				},
