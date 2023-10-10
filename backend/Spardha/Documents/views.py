@@ -73,8 +73,6 @@ class DocumentView(generics.GenericAPIView):
             if not request.user.is_authenticated:
                 return Response({"error": "Please login to continue"}, status=status.HTTP_403_FORBIDDEN)
             if request.user.is_admin or request.user.is_staff:
-                if document_to_verify.is_verified:
-                    return Response({"error": "Verified Document can't be changed"}, status=status.HTTP_400_BAD_REQUEST)
                 if "document" in data_to_modify:
                     del data_to_modify["document"]
                 data_to_modify["made_new_changes"] = False
