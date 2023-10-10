@@ -28,11 +28,11 @@ const Matches = () => {
     'Volleyball',
     'Weight Lifting',
   ];
-  // const [selectedDate, setSelectedDate] = useState('2023-09-23'); // Set the default date here
+  const [selectedDate, setSelectedDate] = useState('2023-10-13'); 
   const [selectedSport, setSelectedSport] = useState('All');
-  // const handleDateChange = (event) => {
-  //   setSelectedDate(event.target.value);
-  // };
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
   const scrollNavbar = (direction) => {
     const navbar = document.getElementById('navbar');
     const step = 200; // Adjust the scroll step as needed
@@ -137,22 +137,23 @@ const Matches = () => {
             </div>
             <div className={`${styles.date}`}>
               {/* <label htmlFor="dateSelect">Select a Date:</label> */}
-              {/* <select
+              <select
                 id="dateSelect"
                 value={selectedDate}
                 onChange={handleDateChange}
               >
-                <option value="2023-09-21">September 21, 2023</option>
-                <option value="2023-09-22">September 22, 2023</option>
-                <option value="2023-09-23">September 23, 2023 </option>
-              </select> */}
+                <option value="2023-10-13">October 13, 2023</option>
+                <option value="2023-10-14">October 14, 2023</option>
+                <option value="2023-10-15">October 15, 2023 </option>
+                <option value="All">All</option>
+              </select>
               {/* <p>Selected Date: {selectedDate}</p> */}
             </div>
             <div className={`${styles.scrollablediv}`}>
               {activeTab === 'Fixtures' ? (
-                <Fixtures selectedSport={selectedSport} />
+                <Fixtures selectedSport={selectedSport} selectedDate={selectedDate} />
               ) : (
-                <MatchResults selectedSport={selectedSport} />
+                <MatchResults selectedSport={selectedSport} selectedDate={selectedDate}/>
               )}
             </div>
           </div>

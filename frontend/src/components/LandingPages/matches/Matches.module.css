@@ -172,6 +172,11 @@ select {
   padding: 15px 40px;
   cursor: pointer;
   border-bottom: transparent;
+  text-align: center;
+  border-radius: 20px;
+}
+option{
+  border: none;
 }
 a {
   cursor: pointer;

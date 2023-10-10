@@ -3,7 +3,7 @@ import axios from 'axios';
 import './ResultFixture.css';
 // import cricket_img from '../Events/image/crickethover.png';
 // import badminton_img from '../Events/image/badmintonhover.png';
-const Fixtures = ({ selectedSport }) => {
+const Fixtures = ({ selectedSport , selectedDate}) => {
   const [matchData, setMatchData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -13,7 +13,7 @@ const Fixtures = ({ selectedSport }) => {
       .get(`${apiUrl}api/v1/games/`)
       .then((response) => {
         // console.log(response.data)
-        setMatchData(response.data.data);
+        setMatchData(response.data.data.reverse());
         setLoading(false);
       })
       .catch((error) => {
@@ -22,10 +22,15 @@ const Fixtures = ({ selectedSport }) => {
       });
   }, []);
 
-  const filteredMatches =
+    const filterMatches =
     selectedSport === 'All'
       ? matchData
       : matchData.filter((match) => match.game_name === selectedSport);
+
+  const filteredMatches =
+    selectedDate === 'All'
+      ? filterMatches
+      : filterMatches.filter((match) => match.game_start.slice(0,10) === selectedDate);
 
   return (
     <div className="Supreme">
@@ -43,7 +48,7 @@ const Fixtures = ({ selectedSport }) => {
                 /> */}
                 {data.game_name}
               </div>
-              {data.game_start}
+              {data.game_start.slice(11,16)}
             </div>
             <div className="row2">
               {data.game_venue}
