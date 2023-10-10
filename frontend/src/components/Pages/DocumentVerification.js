@@ -103,7 +103,7 @@ function DocumentRow({ document, serialNumber, setErrorMessage }) {
 			<tr>
 				<td>{serialNumber}</td>
 				<td>{document.id} </td>
-				<td> <a href={newDoc.document[Object.keys(newDoc.document)[0]]}>Open</a></td>
+				<td> <a href={newDoc.document[Object.keys(newDoc.document)[0]]} target="blank">Open</a></td>
 				<td>
 					<input
 						type="checkbox"
