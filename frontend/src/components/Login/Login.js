@@ -25,6 +25,7 @@ function Login() {
   useEffect(() => {
     const scrollDiv = document.getElementById("loginDiv").offsetTop;
     window.scrollTo({ top: scrollDiv + 600, behavior: "smooth" });
+    console.log(process.env.REACT_APP_BASE_URL)
   }, []);
   const navigate = useNavigate();
   const { setToken } = useContext(AuthContext);
@@ -45,6 +46,7 @@ function Login() {
     }
 
     let baseUrl = process.env.REACT_APP_BASE_URL;
+    console.log(baseUrl)
     if (baseUrl.substring(baseUrl.length - 1) !== "/") baseUrl += "/";
     axios
       .post(`${baseUrl}auth/login/`, {

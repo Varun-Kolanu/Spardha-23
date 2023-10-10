@@ -18,7 +18,6 @@ function DocumentVerification() {
 				},
 			})
 			.then(function (response) {
-				console.log(response.data)
 				setDocuments(response.data);
 			})
 			.catch(function (error) {
@@ -38,8 +37,9 @@ function DocumentVerification() {
 						<th>Verification Time</th>
 						<th>Is Rejected</th>
 						<th>Comments</th>
-						<th>User Id</th>
+						<th>Username</th>
 						<th>Verified By</th>
+						<th>Made New Changes?</th>
 						<th>Sync</th>
 					</tr>
 				</thead>
@@ -60,12 +60,27 @@ DocumentRow.propTypes = {
 	setErrorMessage: PropTypes.func.isRequired,
 };
 
-function DocumentRow({ document,serialNumber, setErrorMessage }) {
+const readableDate = (unreadableDate) => {
+	const date = new Date(unreadableDate);
+
+	const options = {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit',
+	};
+
+	return date.toLocaleString('en-US', options);
+}
+
+function DocumentRow({ document, serialNumber, setErrorMessage }) {
 	const [modified, setModified] = useState(false);
 	const [newDoc, setNewDoc] = useState({ ...document });
 	const { token } = useContext(AuthContext);
 	function submitHandler() {
 		setModified(false)
+		if (newDoc === document) return;
 		axios
 			.patch(baseUrl + "/documents/verify/" + document.id + "/", newDoc, {
 				headers: {
@@ -88,7 +103,7 @@ function DocumentRow({ document,serialNumber, setErrorMessage }) {
 			<tr>
 				<td>{serialNumber}</td>
 				<td>{document.id} </td>
-				<td><KeyValuePairsList data={newDoc.document} /> </td>
+				<td> <a href={newDoc.document[Object.keys(newDoc.document)[0]]}>Open</a></td>
 				<td>
 					<input
 						type="checkbox"
@@ -102,7 +117,7 @@ function DocumentRow({ document,serialNumber, setErrorMessage }) {
 						}}
 					/>
 				</td>
-				<td>{newDoc.verification_time ?? "Not verified"} </td>
+				<td>{newDoc.verification_time ? readableDate(newDoc.verification_time): "--"} </td>
 				<td>
 					<input
 						type="checkbox"
@@ -119,15 +134,16 @@ function DocumentRow({ document,serialNumber, setErrorMessage }) {
 				<td>
 					<input
 						type="text"
-						value={newDoc.comments}
+						value={newDoc.comments??""}
 						onChange={(e) => {
 							setModified(true);
 							setNewDoc({ ...newDoc, comments: e.target.value });
 						}}
 					/>
 				</td>
-				<td>{newDoc.user_id} </td>
-				<td>{newDoc.verified_by_name} </td>
+				<td>{newDoc.username} </td>
+				<td>{newDoc.verified_by?newDoc.verified_by:"--"} </td>
+				<td>{newDoc.made_new_changes ? "Yes" : "No"} </td>
 				<td>
 					<button disabled={!modified} onClick={submitHandler}>
 						Sync Changes
@@ -150,27 +166,6 @@ function ErrorMessage({ message }) {
 		</div>
 	);
 }
-
-KeyValuePairsList.propTypes = {
-	data: PropTypes.object.isRequired,
-};
-function KeyValuePairsList({ data }) {
-	// Convert the object into an array of key-value pairs
-	const keyValueArray = Object.entries(data);
-
-	return (
-		<div>
-			<div>
-				{keyValueArray.map(([key, value]) => (
-					<div key={key}>
-						<strong>{key}:</strong> {value}
-					</div>
-				))}
-			</div>
-		</div>
-	);
-}
-
 
 
 export default DocumentVerification;

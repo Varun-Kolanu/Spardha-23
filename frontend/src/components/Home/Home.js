@@ -49,7 +49,7 @@ function Home() {
 		// 		/>
 		// 	</div>
 		// </>
-		<div class="maindiv">
+		<div className="maindiv">
 
            
         <AdminContent/>
