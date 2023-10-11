@@ -73,16 +73,13 @@ const UploadedDocumentUI = ({doc}) => {
     };
 
     let verifVerdict;
-    if(doc.is_verified && doc.is_rejected){
-        verifVerdict="Error from PR team!"//both cannot be simultaneously true
-    }
-    if (doc.is_verified && !doc.is_rejected) {
+    if (doc.status === 2) {
     verifVerdict="Verfied Successfully!"
     }
-    if (!doc.is_verified && doc.is_rejected) {
+    else if (doc.status === 1) {
         verifVerdict="Rejected. Please read the comments."
     }
-    if (!doc.is_verified && !doc.is_rejected) {
+    else {
         verifVerdict="Pending..."
     }
 
@@ -98,17 +95,17 @@ const UploadedDocumentUI = ({doc}) => {
                     placeholder="Input"
                     value={inputValue}
                     onChange={handleInputChange}
-                    disabled={doc.is_verified}
+                    disabled={doc.status === 2}
                 />
                 <br />
                 <div style={{display: "flex" }}>
-                    <button type="button" className="btn btn-outline-success" id="buttonn" onClick={handleMadeChanges} disabled={doc.is_verified}>I have made Changes</button>
+                    <button type="button" className="btn btn-outline-success" id="buttonn" onClick={handleMadeChanges} disabled={doc.status === 2}>I have made Changes</button>
                 </div>
             </div>
             <div className="comment">
                 <br /><br />
                 <h6>Comments:</h6>
-                <h6>{doc.comments ? doc.comments : "No Comments"}</h6>
+                <h6>{doc.description ? doc.description : "No Comments"}</h6>
             </div>
             <div className="doc_lower_content">
                 <div className="status">

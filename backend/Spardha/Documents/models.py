@@ -19,5 +19,5 @@ class Document(models.Model):
     status = models.IntegerField(choices=Status.get_choices(), default=Status.PENDING.value[0])
     verified_by = models.CharField(max_length=100, blank=True)
     verification_time = models.DateTimeField(null=True)
-    comments = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
     made_new_changes = models.BooleanField(default=True)

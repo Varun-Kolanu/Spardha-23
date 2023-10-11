@@ -65,6 +65,7 @@ class DocumentView(generics.GenericAPIView):
                 "error": "Error fetching document"
                 }"""
         },
+        operation_description = "status = {0 : Pending, 1 : Rejected, 2 : Verified}",
         manual_parameters=[token_param]
     )
     def patch(self, request, id):
@@ -85,7 +86,7 @@ class DocumentView(generics.GenericAPIView):
             elif request.user.username != document_to_verify.username:
                 return Response({"error": "You are not allowed to edit other's document"}, status=status.HTTP_403_FORBIDDEN)
             elif "document" in request.data:
-                if document_to_verify.is_verified:
+                if document_to_verify.status == 2:
                     return Response({"error": "Verified Document can't be changed"}, status=status.HTTP_400_BAD_REQUEST)
                 data_to_modify = {
                     "document": data_to_modify["document"],
@@ -95,7 +96,7 @@ class DocumentView(generics.GenericAPIView):
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
             elif "made_new_changes" in request.data:
-                if document_to_verify.is_verified:
+                if document_to_verify.status == 2:
                     return Response({"error": "Verified Document can't be changed"}, status=status.HTTP_400_BAD_REQUEST)
                 data_to_modify = {
                     "made_new_changes": data_to_modify["made_new_changes"]
