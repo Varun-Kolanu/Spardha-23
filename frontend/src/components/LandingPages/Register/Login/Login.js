@@ -71,6 +71,7 @@ function Login() {
       .then((res) => {
         console.log("login resp",res)
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('role', res.data.role);
         dispatchToast({
           color: 'success',
           message: 'Logged in Successfully! Redirecting...',
