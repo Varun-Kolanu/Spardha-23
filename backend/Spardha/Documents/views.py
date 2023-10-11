@@ -90,7 +90,8 @@ class DocumentView(generics.GenericAPIView):
                     return Response({"error": "Verified Document can't be changed"}, status=status.HTTP_400_BAD_REQUEST)
                 data_to_modify = {
                     "document": data_to_modify["document"],
-                    "made_new_changes": True
+                    "made_new_changes": True,
+                    "status": 0
                 }
                 serializer = self.get_serializer(document_to_verify, data=data_to_modify,partial=True)
                 serializer.is_valid(raise_exception=True)
@@ -99,7 +100,8 @@ class DocumentView(generics.GenericAPIView):
                 if document_to_verify.status == 2:
                     return Response({"error": "Verified Document can't be changed"}, status=status.HTTP_400_BAD_REQUEST)
                 data_to_modify = {
-                    "made_new_changes": data_to_modify["made_new_changes"]
+                    "made_new_changes": data_to_modify["made_new_changes"],
+                    "status": 0
                 }                    
                 serializer = self.get_serializer(document_to_verify, data=data_to_modify,partial=True)
                 serializer.is_valid(raise_exception=True)
