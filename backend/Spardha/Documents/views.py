@@ -38,6 +38,7 @@ class AllDocumentView(generics.GenericAPIView):
                     "success": "Document has been created successfully"
                 }"""
         },
+        operation_description = 'document schema to be posted -> {"document" : {"link": "Your Link..."} }',
         manual_parameters=[token_param]
     )
     def post(self, request):
