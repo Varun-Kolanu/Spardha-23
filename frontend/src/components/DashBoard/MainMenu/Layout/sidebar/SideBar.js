@@ -41,6 +41,7 @@ const SideBar = ({ isOpen, toggle }) => {
     }
 
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     // window.location.href = '/';
   };
 

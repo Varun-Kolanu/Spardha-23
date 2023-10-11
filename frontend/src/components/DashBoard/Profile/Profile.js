@@ -54,6 +54,7 @@ const Profile = () => {
   const delSucceed = () => {
     // console.log('delSucceed');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     navigate('/');
   };
 
@@ -87,6 +88,7 @@ const Profile = () => {
   const changePass = () => {
     // console.log('change');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     navigate('/register/forgot');
   };
 
