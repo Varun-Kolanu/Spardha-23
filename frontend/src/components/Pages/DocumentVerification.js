@@ -8,7 +8,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL;
 function DocumentVerification() {
 	const baseUrl = process.env.REACT_APP_BASE_URL;
 	const [documents, setDocuments] = useState([]);
-	const [errormsg, setErrorMessage] = useState("")
+	const [errormsg, setErrorMessage] = useState("");
 	const { token } = useContext(AuthContext);
 	useEffect(function () {
 		axios
@@ -33,9 +33,8 @@ function DocumentVerification() {
 						<th>#</th>
 						<th>ID</th>
 						<th>Document</th>
-						<th>Is Verified</th>
+						<th>Verification Status</th>
 						<th>Verification Time</th>
-						<th>Is Rejected</th>
 						<th>Comments</th>
 						<th>Username</th>
 						<th>Verified By</th>
@@ -45,7 +44,7 @@ function DocumentVerification() {
 				</thead>
 				<tbody>
 					{documents.map((document, index) => (
-						<DocumentRow key={index} document={document} serialNumber={index + 1} setErrorMessage={setErrorMessage} />
+						<DocumentRow key={index} document={document} serialNumber={index + 1} setErrorMessage={setErrorMessage}/>
 					))}
 				</tbody>
 			</table>
@@ -105,44 +104,28 @@ function DocumentRow({ document, serialNumber, setErrorMessage }) {
 				<td>{document.id} </td>
 				<td> <a href={newDoc.document[Object.keys(newDoc.document)[0]]} target="blank">Open</a></td>
 				<td>
-					<input
-						type="checkbox"
-						checked={newDoc.is_verified}
-						onChange={(e) => {
-							setModified(true);
-							setNewDoc({
-								...newDoc,
-								is_verified: e.target.checked,
-							});
-						}}
-					/>
+					<select value={newDoc.status} onChange={e => {
+						setModified(true);
+						setNewDoc({...newDoc, status: Number(e.target.value)})
+					}}>
+						<option value="0">Pending</option>
+						<option value="1">Rejected</option>
+						<option value="2">Verified</option>
+					</select>
 				</td>
-				<td>{newDoc.verification_time ? readableDate(newDoc.verification_time): "--"} </td>
-				<td>
-					<input
-						type="checkbox"
-						checked={newDoc.is_rejected}
-						onChange={(e) => {
-							setModified(true);
-							setNewDoc({
-								...newDoc,
-								is_rejected: e.target.checked,
-							});
-						}}
-					/>
-				</td>
+				<td>{newDoc.verification_time ? readableDate(newDoc.verification_time) : "--"} </td>
 				<td>
 					<input
 						type="text"
-						value={newDoc.comments??""}
+						value={newDoc.description ?? ""}
 						onChange={(e) => {
 							setModified(true);
-							setNewDoc({ ...newDoc, comments: e.target.value });
+							setNewDoc({ ...newDoc, description: e.target.value });
 						}}
 					/>
 				</td>
 				<td>{newDoc.username} </td>
-				<td>{newDoc.verified_by?newDoc.verified_by:"--"} </td>
+				<td>{newDoc.verified_by ? newDoc.verified_by : "--"} </td>
 				<td>{newDoc.made_new_changes ? "Yes" : "No"} </td>
 				<td>
 					<button disabled={!modified} onClick={submitHandler}>
