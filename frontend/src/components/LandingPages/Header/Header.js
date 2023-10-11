@@ -165,11 +165,11 @@ function Header() {
                     About
                   </NavHashLink>
                 </NavItem>
-                {/* <NavItem className={styles['nav-items']}>
+                <NavItem className={styles['nav-items']}>
                   <NavHashLink
                     exact="true"
                     // to="/events#events"
-                    to="/matches#matches"
+                    to="/matches"
                     className={styles['nav-links']}
                     onClick={() => {
                       setOpen(false);
@@ -198,7 +198,7 @@ function Header() {
                   >
                     Matches
                   </NavHashLink>
-                </NavItem> */}
+                </NavItem>
                 <NavItem className={styles['nav-items']}>
                   <NavHashLink
                     exact="true"

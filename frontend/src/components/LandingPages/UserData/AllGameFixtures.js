@@ -6,7 +6,7 @@ import axios from 'axios';
 let MICROSERVICE_URL_GAME = process.env.REACT_APP_MICROSERVICE_URL;
 if (MICROSERVICE_URL_GAME.substring(MICROSERVICE_URL_GAME.length - 1) !== '/')
   MICROSERVICE_URL_GAME += '/';
-MICROSERVICE_URL_GAME += 'api/v1/games';
+MICROSERVICE_URL_GAME += '/api/v1/games';
 const AllGameFixtures = () => {
   const [sportsAndFixtures, setSportsAndFixtures] = useState();
   const [sportNames, setSportNames] = useState();

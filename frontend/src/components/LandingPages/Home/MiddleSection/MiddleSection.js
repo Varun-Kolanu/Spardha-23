@@ -18,7 +18,7 @@ function Mid() {
 
 
         
-<NavHashLink   to="/events#events">    <button className="btn2">MATCHES</button></NavHashLink>
+<NavHashLink   to="/matches">    <button className="btn2">MATCHES</button></NavHashLink>
 
           </div>
         </div>

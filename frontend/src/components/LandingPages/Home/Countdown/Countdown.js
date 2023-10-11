@@ -49,7 +49,7 @@ class CountdownTimer extends Component {
             <span class="hours">
               <div class="time">
                 
-                <div>{Math.floor((hours < 10 ? `0${this.state.hours}` : this.state.hours)/100)} </div>
+                {/* <div>{Math.floor((hours < 10 ? `0${this.state.hours}` : this.state.hours)/100)} </div> */}
                 <div>{Math.floor(((hours < 10 ? `0${this.state.hours}` : this.state.hours)/10)%10)} </div>
                 <div>{(hours < 10 ? `0${this.state.hours}` : this.state.hours)%10} </div>
             </div>

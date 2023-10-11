@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ResultFixture.css';
+import versus from './icon/vs.png'
 // import cricket_img from '../Events/image/crickethover.png';
 // import badminton_img from '../Events/image/badmintonhover.png';
 const Fixtures = ({ selectedSport , selectedDate}) => {
@@ -10,7 +11,7 @@ const Fixtures = ({ selectedSport , selectedDate}) => {
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_MICROSERVICE_URL;
     axios
-      .get(`${apiUrl}api/v1/games/`)
+      .get(`${apiUrl}/api/v1/games/`)
       .then((response) => {
         // console.log(response.data)
         setMatchData(response.data.data.reverse());
@@ -48,21 +49,23 @@ const Fixtures = ({ selectedSport , selectedDate}) => {
                 /> */}
                 {data.game_name}
               </div>
-              {data.game_start.slice(11,16)}
+              Time:&nbsp;{data.game_start.slice(11,16)}
             </div>
-            <div className="row2">
+            <div className="row2">Venue:&nbsp;
               {data.game_venue}
               {/* | Round {data.round }*/}
             </div>
 
             <div className="row3" style={{ color: 'black' }}>
               <div className="row4">
-                <div className="rectangle"></div>
+                {/* <div className="rectangle"></div> */}
                 {data.team1}
               </div>
-              <span className="x">X</span>
+              <span className="x">
+                <img src={versus} alt='vs'/>
+              </span>
               <div className="row4">
-                <div className="rectangle"></div>
+                {/* <div className="rectangle"></div> */}
                 {data.team2}
               </div>
             </div>

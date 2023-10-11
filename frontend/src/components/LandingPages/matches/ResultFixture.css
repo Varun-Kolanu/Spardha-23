@@ -44,12 +44,16 @@ p {
 }
 .x {
   color: #000;
-  font-family: Poppins;
+  /* font-family: Poppins;
   font-size: 2.1875rem;
   font-style: normal;
-  font-weight: 600;
-  line-height: 1.5625rem; /* 71.429% */
-  padding: 9px 0px 2rem 0px;
+  font-weight: 600; */
+  /* line-height: 1.5625rem; 71.429% */
+  /* padding: 9px 0px 2rem 0px; */
+}
+.x img{
+  height: 50px;
+  width: 50px;
 }
 .score {
   color: #760e53;
@@ -67,11 +71,11 @@ p {
   color: #760e53;
   text-align: center;
   font-family: Poppins;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-style: normal;
   font-weight: 600;
   line-height: 1.5625rem; /* 156.25% */
-
+  /* margin: auto; */
   justify-content: center;
 }
 .rectangle {
@@ -150,6 +154,10 @@ td {
   }
   .row4 {
     grid-template-rows: 2fr 2fr 1fr;
+  }
+  .x img{
+    height: 30px;
+    width: 30px;
   }
 }
 
