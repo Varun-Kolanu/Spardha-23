@@ -6,7 +6,7 @@ class AllDocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
         fields = "__all__"
-        read_only_fields = ["id", "username", "is_verified","verified_by", "verification_time", "is_rejected", "comments", "made_new_changes"]
+        read_only_fields = ["id", "username","verified_by", "verification_time", "status", "comments", "made_new_changes"]
 
     def create(self, validated_data):
         document_to_add = Document.objects.create(
@@ -19,4 +19,4 @@ class DocumentUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Document
-        fields = ("document", "is_verified", "is_rejected", "comments", "made_new_changes")
+        fields = ("document", "status", "comments", "made_new_changes")

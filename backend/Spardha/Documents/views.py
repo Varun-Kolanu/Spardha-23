@@ -12,6 +12,7 @@ class AllDocumentView(generics.GenericAPIView):
     serializer_class = AllDocumentSerializer
 
     @swagger_auto_schema(
+        operation_description = "status = {0 : Pending, 1 : Rejected, 2 : Verified}",
         manual_parameters=[token_param]
     )
     def get(self, request):
