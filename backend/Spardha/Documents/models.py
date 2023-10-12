@@ -20,4 +20,3 @@ class Document(models.Model):
     verified_by = models.CharField(max_length=100, blank=True)
     verification_time = models.DateTimeField(null=True)
     description = models.TextField(null=True, blank=True)
-    made_new_changes = models.BooleanField(default=True)

@@ -60,7 +60,7 @@ const UploadedDocumentUI = ({ doc }) => {
 
     useEffect(() => {
         setInputValue(doc.document[Object.keys(doc.document).at(0)])
-    }, [doc.document, doc.made_new_changes])
+    }, [doc.document])
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
     };
@@ -71,7 +71,6 @@ const UploadedDocumentUI = ({ doc }) => {
             document: {
                 link: inputValue
             },
-            made_new_changes: true
         }, {
             headers: {
                 Authorization: "Token " + token
