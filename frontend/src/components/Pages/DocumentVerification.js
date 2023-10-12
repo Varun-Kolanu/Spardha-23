@@ -12,7 +12,7 @@ function DocumentVerification() {
 	const { token } = useContext(AuthContext);
 	useEffect(function () {
 		axios
-			.get(baseUrl + "documents/", {
+			.get(baseUrl + "/documents/", {
 				headers: {
 					Authorization: `Token ${token}`,
 				},
@@ -80,7 +80,7 @@ function DocumentRow({ document, serialNumber, setErrorMessage }) {
 		setModified(false)
 		if (newDoc === document) return;
 		axios
-			.patch(baseUrl + "documents/" + document.id + "/", newDoc, {
+			.patch(baseUrl + "/documents/" + document.id + "/", newDoc, {
 				headers: {
 					Authorization: `Token ${token}`,
 				},
