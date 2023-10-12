@@ -38,7 +38,6 @@ function DocumentVerification() {
 						<th>Comments</th>
 						<th>Username</th>
 						<th>Verified By</th>
-						<th>Made New Changes?</th>
 						<th>Sync</th>
 					</tr>
 				</thead>
@@ -126,7 +125,6 @@ function DocumentRow({ document, serialNumber, setErrorMessage }) {
 				</td>
 				<td>{newDoc.username} </td>
 				<td>{newDoc.verified_by ? newDoc.verified_by : "--"} </td>
-				<td>{newDoc.made_new_changes ? "Yes" : "No"} </td>
 				<td>
 					<button disabled={!modified} onClick={submitHandler}>
 						Sync Changes
